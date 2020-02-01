@@ -5,21 +5,21 @@ namespace IgorFoundABug.Codigo.Model.BLL
 {
     public class GravidadeBLL
     {
-        public static void Pular(ObjetoFisicoDTO personagemDTO, bool is2D)
+        public static void Pular(ObjetoFisicoDTO personagemDTO)
         {
-            personagemDTO.gravidade = is2D? -10 : 10;
+            personagemDTO.gravidade = personagemDTO.corpo == null ? 10 : -10;
         }
-        public static void Gravidade(KinematicBody corpo, ObjetoFisicoDTO personagemDTO)
+        public static void Gravidade(ObjetoFisicoDTO personagemDTO)
         {
-            personagemDTO.gravidade = personagemDTO.gravidade > -9.8f? -personagemDTO.peso * corpo.GetPhysicsProcessDeltaTime() : 9.8f;
+            personagemDTO.gravidade = personagemDTO.gravidade > -9.8f? personagemDTO.peso * personagemDTO.corpo.GetPhysicsProcessDeltaTime() : 9.8f;
             
-            corpo.MoveAndSlide(new Vector3(0, personagemDTO.gravidade * 50 * corpo.GetPhysicsProcessDeltaTime(), 0));
+            personagemDTO.corpo.MoveAndSlide(new Vector3(0, personagemDTO.gravidade * 50 * personagemDTO.corpo.GetPhysicsProcessDeltaTime(), 0));
         }
-        public static void Gravidade2D(KinematicBody2D corpo, ObjetoFisicoDTO personagemDTO)
+        public static void Gravidade2D(ObjetoFisicoDTO personagemDTO)
         {
-            personagemDTO.gravidade = personagemDTO.gravidade > 9.8f? personagemDTO.peso * corpo.GetPhysicsProcessDeltaTime() : 9.8f;
+            personagemDTO.gravidade = personagemDTO.gravidade > 9.8f? personagemDTO.peso * personagemDTO.corpo2D.GetPhysicsProcessDeltaTime() : 9.8f;
 
-            corpo.MoveAndSlide(new Vector2(0, personagemDTO.gravidade * 200 * corpo.GetPhysicsProcessDeltaTime()));
+            personagemDTO.corpo2D.MoveAndSlide(new Vector2(0, personagemDTO.gravidade * 200 * personagemDTO.corpo2D.GetPhysicsProcessDeltaTime()));
         }
     }
 }

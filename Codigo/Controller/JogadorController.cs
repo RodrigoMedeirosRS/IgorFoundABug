@@ -16,11 +16,11 @@ namespace IgorFoundABug.Codigo.Controller
             igorDTO.velocidade = 1f;
             igorDTO.peso = 60;
             igorDTO.gravidade = 9.8f;
-
+            igorDTO.corpo2D = this;
         }
         public override void _PhysicsProcess(float delta)
         {
-            GravidadeBLL.Gravidade2D(this, igorDTO);
+            GravidadeBLL.Gravidade2D(igorDTO);
         }
     }
 }
