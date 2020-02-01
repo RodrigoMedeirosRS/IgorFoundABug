@@ -9,5 +9,6 @@ namespace IgorFoundABug.Codigo.Model.DTO
         public float gravidade { get; set; }
         public float peso { get; set; }
         public float velocidade { get; set; }
+        public float forcaPulo { get; set; }
     }
 }
