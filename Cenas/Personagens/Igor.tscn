@@ -26,7 +26,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteDoIgor:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
@@ -73,16 +73,16 @@ extents = Vector2( 4.0517, 8 )
 [node name="Igor" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="SpriteDoIgor" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-hframes = 16
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Idle = SubResource( 1 )
 anims/Jump = SubResource( 2 )
 anims/Morte = SubResource( 3 )
 anims/Walk = SubResource( 4 )
+
+[node name="SpriteDoIgor" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 16
 
 [node name="Colisor" type="CollisionShape2D" parent="."]
 shape = SubResource( 5 )

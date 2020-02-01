@@ -53,12 +53,14 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Codigo\Model\BLL\GravidadeBLL.cs" />
+    <Compile Include="Codigo\Model\DTO\JogadorDTO.cs" />
+    <Compile Include="Codigo\Model\DTO\PersonagemDTO.cs" />
+    <Compile Include="Codigo\Model\DTO\ObjetoFisicoDTO.cs" />
+    <Compile Include="Codigo\View\AnimationView.cs" />
     <Compile Include="Codigo\Controller\Utils\KeyboardUtils.cs" />
     <Compile Include="Codigo\Controller\GameController.cs" />
     <Compile Include="Codigo\Controller\JogadorController.cs" />
-    <Compile Include="Codigo\Model\BLL\GravidadeBLL.cs" />
-    <Compile Include="Codigo\Model\DTO\JogadorDTO.cs" />
-    <Compile Include="Codigo\Model\DTO\ObjetoFisicoDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
