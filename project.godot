@@ -16,7 +16,17 @@ _global_script_class_icons={
 [application]
 
 config/name="Igor Found a Bug"
+run/main_scene="res://Base.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=84
+window/size/height=48
+window/size/resizable=false
+window/size/fullscreen=true
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [rendering]
 
