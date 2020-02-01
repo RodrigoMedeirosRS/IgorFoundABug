@@ -15,13 +15,15 @@ namespace IgorFoundABug.Codigo.Controller
         {
             IgorDTO.vida = 1.0f;
             IgorDTO.municao = 3;
-            IgorDTO.velocidade = 1f;
-            IgorDTO.peso = 80;
-            IgorDTO.gravidade = 9.8f;
-            IgorDTO.forcaPulo = -20;
-            IgorDTO.corpo2D = this;
+            IgorDTO.Velocidade = 1f;
+            IgorDTO.Peso = 80;
+            IgorDTO.Gravidade = 9.8f;
+            IgorDTO.ForcaPulo = -20;
+            IgorDTO.Direcao = new Vector2(0,0);
+            IgorDTO.Corpo2D = this;
             IgorDTO.UltimaAnimcacao = "";
             IgorDTO.AnimationPlaryer = GetChild<AnimationPlayer>(0);
+            IgorDTO.SpritePersonagem = GetChild<Sprite>(1);
         }
         public override void _PhysicsProcess(float delta)
         {
@@ -38,11 +40,17 @@ namespace IgorFoundABug.Codigo.Controller
         {
             if (KeyboardUtils.GetKey("ui_up", Keystatus.Pressed))
                 GravidadeBLL.Pular(IgorDTO);
+            
+            IgorDTO.Direcao.x = (Convert.ToInt32(KeyboardUtils.GetKey("ui_right", Keystatus.Hold)) - Convert.ToInt32(KeyboardUtils.GetKey("ui_left", Keystatus.Hold)));
+            
+            MovimentoKinematicoBLL.Move2D(IgorDTO);
         }
         private void Animar()
         {
-            AnimationView.ExecutarAnimacao(IgorDTO.corpo2D.IsOnFloor(), "Idle", IgorDTO);
-            AnimationView.ExecutarAnimacao(!IgorDTO.corpo2D.IsOnFloor(), "Jump", IgorDTO);
+            AnimationView.ExecutarAnimacao(IgorDTO.Corpo2D.IsOnFloor() && IgorDTO.Direcao.x == 0, "Idle", IgorDTO);
+            AnimationView.ExecutarAnimacao(IgorDTO.Corpo2D.IsOnFloor() && IgorDTO.Direcao.x != 0, "Walk", IgorDTO);
+            AnimationView.ExecutarAnimacao(!IgorDTO.Corpo2D.IsOnFloor(), "Jump", IgorDTO);
+            AnimationView.Flip2D(IgorDTO);
         }
     }
 }

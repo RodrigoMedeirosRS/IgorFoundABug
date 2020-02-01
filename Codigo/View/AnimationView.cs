@@ -13,5 +13,10 @@ namespace IgorFoundABug.Codigo.View
                 personagemDTO.AnimationPlaryer.Play(nomeAnimacao, -1, 1);
             }
         }
+        public static void Flip2D(PersonagemDTO personagemDTO)
+        {
+            if (personagemDTO.Direcao.x != 0)
+                personagemDTO.SpritePersonagem.FlipH = personagemDTO.Direcao.x < 0;
+        }
     }
 }
