@@ -9,7 +9,7 @@ namespace IgorFoundABug.Codigo.Controller
     {       
         public override void _Ready()
         {
-        
+            OS.WindowMaximized = true;
         }
         public override void _Process(float delta)
         {
