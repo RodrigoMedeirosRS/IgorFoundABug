@@ -10,12 +10,13 @@ namespace IgorFoundABug.Codigo.Controller
 {
 	public class JogadorController : KinematicBody2D
 	{
-		JogadorDTO IgorDTO = new JogadorDTO();
+		public JogadorDTO IgorDTO = new JogadorDTO();
+		private Node2D Arma;
 		public override void _Ready()
 		{
 			IgorDTO.Vivo = true;
 			IgorDTO.Vida = 1.0f;
-			IgorDTO.Municao = 3;
+			IgorDTO.Municao = 0;
 			IgorDTO.Velocidade = 1f;
 			IgorDTO.Peso = 80;
 			IgorDTO.Gravidade = 9.8f;
@@ -25,6 +26,7 @@ namespace IgorFoundABug.Codigo.Controller
 			IgorDTO.UltimaAnimcacao = "";
 			IgorDTO.AnimationPlaryer = GetChild<AnimationPlayer>(0);
 			IgorDTO.SpritePersonagem = GetChild<Sprite>(1);
+			Arma = GetChild<Node2D>(3);
 		}
 		public override void _PhysicsProcess(float delta)
 		{
@@ -54,13 +56,10 @@ namespace IgorFoundABug.Codigo.Controller
 				AnimationView.ExecutarAnimacao(IgorDTO.Corpo2D.IsOnFloor() && IgorDTO.Direcao.x == 0, "Idle", IgorDTO);
 				AnimationView.ExecutarAnimacao(IgorDTO.Corpo2D.IsOnFloor() && IgorDTO.Direcao.x != 0, "Walk", IgorDTO);
 				AnimationView.ExecutarAnimacao(!IgorDTO.Corpo2D.IsOnFloor(), "Jump", IgorDTO);
-				AnimationView.Flip2D(IgorDTO);
+				Arma.Visible = IgorDTO.Municao != 0;
+				Arma.Scale = new Vector2(1 - (2 * Convert.ToInt32(AnimationView.Flip2D(IgorDTO))), 1);				
 			}
 			AnimationView.ExecutarAnimacao(!IgorDTO.Vivo, "Morte", IgorDTO);
-		}
-		private void _on_Deathbox_MorreIgor()
-		{
-			IgorDTO.Vivo = false;
 		}
 		private void _on_AnimationPlayer_animation_finished(String anim_name)
 		{

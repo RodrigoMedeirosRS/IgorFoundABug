@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Cenas/Personagens/Igor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Codigo/Controller/GameController.cs" type="Script" id=2]
 [ext_resource path="res://Recursos/Sprites/Calabouco.tres" type="TileSet" id=3]
 [ext_resource path="res://Codigo/Model/Utils/Camera2DFollow.cs" type="Script" id=4]
-[ext_resource path="res://Codigo/Model/Utils/Espinho.cs" type="Script" id=5]
+[ext_resource path="res://Codigo/Controller/DeathAreaController.cs" type="Script" id=5]
+[ext_resource path="res://Cenas/Objetos/PowerUP.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 11.8079, 3.03217 )
@@ -35,19 +36,22 @@ script = ExtResource( 4 )
 
 [node name="Spawners" type="Node" parent="."]
 
-[node name="Armadilhas" type="Node" parent="."]
+[node name="Objetos" type="Node" parent="."]
 
-[node name="Deathbox" type="Area2D" parent="Armadilhas"]
+[node name="Deathbox" type="Area2D" parent="Objetos"]
 position = Vector2( 90.0008, 46.4783 )
 script = ExtResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Armadilhas/Deathbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 1.8313, 0 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Armadilhas/Deathbox"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 93.8313, 0 )
 shape = SubResource( 3 )
+
+[node name="PowerUP" parent="Objetos" instance=ExtResource( 6 )]
+position = Vector2( 328.71, 42.0593 )
 
 [node name="Prision" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -60,5 +64,4 @@ tile_data = PoolIntArray( 65524, 0, 0, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 516.12, 57.8395 )
 shape = SubResource( 1 )
-[connection signal="MorreIgor" from="Armadilhas/Deathbox" to="Jogador/Igor" method="_on_Deathbox_MorreIgor"]
-[connection signal="body_entered" from="Armadilhas/Deathbox" to="Armadilhas/Deathbox" method="_on_Deathbox_body_entered"]
+[connection signal="body_entered" from="Objetos/Deathbox" to="Objetos/Deathbox" method="_on_Deathbox_body_entered"]

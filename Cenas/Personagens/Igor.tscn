@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Recursos/Sprites/Igor.png" type="Texture" id=1]
 [ext_resource path="res://Codigo/Controller/JogadorController.cs" type="Script" id=2]
+[ext_resource path="res://Recursos/Sprites/gun.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -88,4 +89,11 @@ hframes = 16
 [node name="Colisor" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.4972 )
 shape = SubResource( 5 )
+
+[node name="Arma" type="Node2D" parent="."]
+
+[node name="ArmaSprite" type="Sprite" parent="Arma"]
+position = Vector2( 6, 0 )
+texture = ExtResource( 3 )
+hframes = 2
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
