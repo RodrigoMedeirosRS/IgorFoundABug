@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Cenas/Personagens/Igor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Codigo/Controller/GameController.cs" type="Script" id=2]
-[ext_resource path="res://Recursos/Sprites/Prisao.tres" type="TileSet" id=3]
+[ext_resource path="res://Recursos/Sprites/Calabouco.tres" type="TileSet" id=3]
 [ext_resource path="res://Codigo/Model/Utils/Camera2DFollow.cs" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -28,7 +28,6 @@ script = ExtResource( 4 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 8, 8 )
 format = 1
-tile_data = PoolIntArray( 65535, 2, 0, 9, 2, 0, 15, 1, 0, 38, 1, 0, 131071, 2, 0, 65545, 8, 0, 65551, 8, 0, 65574, 8, 0, 196607, 1, 0, 131081, 9, 0, 131087, 9, 0, 131110, 9, 0, 262143, 1, 0, 196616, 1, 0, 196617, 2, 0, 196618, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 2, 0, 196627, 1, 0, 196628, 2, 0, 196629, 1, 0, 196633, 2, 0, 196634, 1, 0, 196635, 2, 0, 196638, 2, 0, 196641, 1, 0, 196646, 1, 0, 327679, 2, 0, 262152, 1, 0, 262153, 2, 0, 262154, 1, 0, 262158, 2, 0, 262159, 1, 0, 262160, 1, 0, 262182, 2, 0, 393215, 1, 0, 327687, 2, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 3, 0, 327692, 3, 0, 327693, 3, 0, 327694, 1, 0, 327695, 2, 0, 327696, 1, 0, 327697, 3, 0, 327698, 3, 0, 327699, 3, 0, 327700, 3, 0, 327701, 3, 0, 327702, 3, 0, 327703, 3, 0, 327704, 3, 0, 327705, 3, 0, 327706, 3, 0, 327707, 3, 0, 327708, 3, 0, 327709, 3, 0, 327710, 3, 0, 327711, 3, 0, 327712, 3, 0, 327713, 3, 0, 327714, 3, 0, 327715, 3, 0, 327716, 3, 0, 327717, 3, 0, 327718, 1, 0 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
