@@ -6,6 +6,7 @@ namespace IgorFoundABug.Codigo.Model.DTO
     {
         public Sprite SpritePersonagem { get; set; }
         public AnimationPlayer AnimationPlaryer { get; set; }
+        public bool Vivo { get; set; }
         public string UltimaAnimcacao { get; set; }
     }
 }

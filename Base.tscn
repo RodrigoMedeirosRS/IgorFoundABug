@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Cenas/Personagens/Igor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Codigo/Controller/GameController.cs" type="Script" id=2]
 [ext_resource path="res://Recursos/Sprites/Calabouco.tres" type="TileSet" id=3]
 [ext_resource path="res://Codigo/Model/Utils/Camera2DFollow.cs" type="Script" id=4]
+[ext_resource path="res://Codigo/Model/Utils/Espinho.cs" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11.8079, 3.03217 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 55.3132, 3.03217 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 516.44, 10 )
@@ -11,12 +18,14 @@ extents = Vector2( 516.44, 10 )
 [node name="Base" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Igor" parent="." groups=[
+[node name="Jogador" type="Node" parent="."]
+
+[node name="Igor" parent="Jogador" groups=[
 "player",
 ] instance=ExtResource( 1 )]
 position = Vector2( 32.9631, 21.2307 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Jogador"]
 position = Vector2( 34.1561, 23.9024 )
 current = true
 process_mode = 0
@@ -24,13 +33,32 @@ drag_margin_v_enabled = true
 drag_margin_top = 1.0
 script = ExtResource( 4 )
 
+[node name="Spawners" type="Node" parent="."]
+
+[node name="Armadilhas" type="Node" parent="."]
+
+[node name="Deathbox" type="Area2D" parent="Armadilhas"]
+position = Vector2( 90.0008, 46.4783 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Armadilhas/Deathbox"]
+position = Vector2( 1.8313, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Armadilhas/Deathbox"]
+position = Vector2( 93.8313, 0 )
+shape = SubResource( 3 )
+
 [node name="Prision" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 8, 8 )
 format = 1
+tile_data = PoolIntArray( 65524, 0, 0, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 7, 5, 0, 9, 0, 0, 14, 0, 0, 18, 5, 0, 24, 4, 0, 31, 0, 0, 36, 4, 0, 131060, 0, 0, 131061, 0, 0, 131062, 1, 0, 131063, 1, 0, 131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 1, 0, 131068, 1, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65537, 3, 0, 65542, 3, 0, 65545, 7, 0, 65548, 4, 0, 65550, 7, 0, 65558, 3, 0, 65564, 3, 0, 65567, 7, 0, 65570, 3, 0, 65575, 3, 0, 196596, 0, 0, 196597, 1, 0, 196598, 1, 0, 196599, 1, 0, 196600, 1, 0, 196601, 0, 0, 196602, 1, 0, 196603, 1, 0, 196604, 1, 0, 196605, 0, 0, 196606, 1, 0, 196607, 0, 0, 131081, 8, 0, 131086, 8, 0, 131103, 8, 0, 131113, 5, 0, 262132, 1, 0, 262133, 1, 0, 262134, 0, 0, 262135, 0, 0, 262136, 1, 0, 262137, 1, 0, 262138, 1, 0, 262139, 1, 0, 262140, 0, 0, 262141, 1, 0, 262142, 1, 0, 262143, 0, 0, 196609, 4, 0, 196616, 0, 0, 196617, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 196636, 4, 0, 196638, 0, 0, 196639, 0, 0, 196640, 0, 0, 196641, 0, 0, 327668, 1, 0, 327669, 1, 0, 327670, 1, 0, 327671, 1, 0, 327672, 1, 0, 327673, 1, 0, 327674, 1, 0, 327675, 1, 0, 327676, 1, 0, 327677, 1, 0, 327678, 1, 0, 327679, 1, 0, 262151, 0, 0, 262152, 1, 0, 262153, 0, 0, 262154, 5, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262161, 5, 0, 262174, 0, 0, 262175, 0, 0, 262176, 0, 0, 262177, 0, 0, 262178, 0, 0, 262182, 5, 0, 262188, 4, 0, 393204, 0, 0, 393205, 0, 0, 393206, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 1, 0, 393212, 1, 0, 393213, 0, 0, 393214, 0, 0, 393215, 1, 0, 327686, 0, 0, 327687, 1, 0, 327688, 0, 0, 327689, 1, 0, 327690, 2, 0, 327691, 2, 0, 327692, 2, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 2, 0, 327697, 2, 0, 327698, 2, 0, 327699, 2, 0, 327700, 2, 0, 327701, 2, 0, 327702, 2, 0, 327703, 2, 0, 327704, 2, 0, 327705, 2, 0, 327706, 2, 0, 327707, 2, 0, 327708, 2, 0, 327709, 2, 0, 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327715, 0, 0 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 516.12, 57.8395 )
 shape = SubResource( 1 )
+[connection signal="MorreIgor" from="Armadilhas/Deathbox" to="Jogador/Igor" method="_on_Deathbox_MorreIgor"]
+[connection signal="body_entered" from="Armadilhas/Deathbox" to="Armadilhas/Deathbox" method="_on_Deathbox_body_entered"]

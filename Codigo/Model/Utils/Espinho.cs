@@ -1,13 +1,22 @@
 using Godot;
 using System;
 
+
 namespace IgorFoundABug.Codigo.Model.Utils
 {
-	public class Espinho : Sprite
+	public class Espinho : Area2D
 	{
-		private void _on_StaticBody2D_body_entered(object body)
+		[Signal]
+		public delegate void MorreIgor();
+		private void _on_Deathbox_body_entered(object body)
 		{
-			GD.Print(body);
+			if (body is KinematicBody2D)
+			{
+				var objeto = (KinematicBody2D)body;
+				if (objeto.IsInGroup("player"))
+					EmitSignal(nameof(MorreIgor));
+			}
 		}
+
 	}
 }

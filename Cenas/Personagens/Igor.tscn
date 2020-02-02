@@ -81,9 +81,11 @@ anims/Morte = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 
 [node name="SpriteDoIgor" type="Sprite" parent="."]
+z_index = 1
 texture = ExtResource( 1 )
 hframes = 16
 
 [node name="Colisor" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.4972 )
 shape = SubResource( 5 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
