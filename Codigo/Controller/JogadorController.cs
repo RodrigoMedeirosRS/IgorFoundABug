@@ -11,7 +11,7 @@ namespace IgorFoundABug.Codigo.Controller
 	public class JogadorController : KinematicBody2D
 	{
 		public JogadorDTO IgorDTO = new JogadorDTO();
-		private Node2D Arma;
+		private ArmaController Arma;
 		public override void _Ready()
 		{
 			IgorDTO.Vivo = true;
@@ -26,7 +26,7 @@ namespace IgorFoundABug.Codigo.Controller
 			IgorDTO.UltimaAnimcacao = "";
 			IgorDTO.AnimationPlaryer = GetChild<AnimationPlayer>(0);
 			IgorDTO.SpritePersonagem = GetChild<Sprite>(1);
-			Arma = GetChild<Node2D>(3);
+			Arma = GetChild<Node2D>(3) as ArmaController;
 		}
 		public override void _PhysicsProcess(float delta)
 		{
@@ -42,6 +42,8 @@ namespace IgorFoundABug.Codigo.Controller
 		}
 		private void Movimento()
 		{
+			if (KeyboardUtils.GetKey("ui_select", Keystatus.Pressed))
+				Arma.Atirar(IgorDTO.SpritePersonagem.FlipH);
 			if (KeyboardUtils.GetKey("ui_up", Keystatus.Pressed))
 				GravidadeBLL.Pular(IgorDTO);
 			
