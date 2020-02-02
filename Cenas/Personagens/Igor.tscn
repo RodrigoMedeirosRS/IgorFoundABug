@@ -68,7 +68,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 4.0517, 8 )
+extents = Vector2( 4.0517, 7.50975 )
 
 [node name="Igor" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -85,4 +85,5 @@ texture = ExtResource( 1 )
 hframes = 16
 
 [node name="Colisor" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.4972 )
 shape = SubResource( 5 )

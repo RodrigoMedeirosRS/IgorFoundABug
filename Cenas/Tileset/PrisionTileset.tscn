@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Recursos/Sprites/PrisionTileset.png" type="Texture" id=1]
+[ext_resource path="res://Codigo/Model/Utils/Espinho.cs" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.97523, 4.00447 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3.97523, 2.01918 )
+
+[node name="PrisionTileset" type="Node"]
+
+[node name="Rocha_1" type="Sprite" parent="." groups=[
+"chao",
+]]
+position = Vector2( 4.851, 5.17473 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rocha_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocha_1/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Rocha_2" type="Sprite" parent="." groups=[
+"chao",
+]]
+position = Vector2( 13.851, 5.17473 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 8, 0, 8, 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rocha_2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocha_2/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Espinho" type="Sprite" parent="." groups=[
+"espinho",
+]]
+position = Vector2( 22.851, 5.17473 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 24, 8, 8 )
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Espinho"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Espinho/StaticBody2D"]
+position = Vector2( 0, 2 )
+shape = SubResource( 2 )
+
+[node name="Objeto_1" type="Sprite" parent="."]
+position = Vector2( 4.851, 14.1747 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 8, 8 )
+
+[node name="Objeto_2" type="Sprite" parent="."]
+position = Vector2( 4.851, 23.1747 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 8, 8, 8 )
+
+[node name="Objeto_3" type="Sprite" parent="."]
+position = Vector2( 13.851, 23.1747 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 8, 8, 8, 8 )
+
+[node name="Objeto_4" type="Sprite" parent="."]
+position = Vector2( 13.851, 14.1747 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 8, 8 )
+
+[node name="Objeto_5" type="Sprite" parent="."]
+position = Vector2( 22.851, 14.1747 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 8, 16, 8, 8 )
+
+[node name="Objeto_6" type="Sprite" parent="."]
+position = Vector2( 22.851, 23.1747 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 8, 24, 8, 8 )

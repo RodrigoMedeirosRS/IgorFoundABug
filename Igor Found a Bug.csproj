@@ -58,6 +58,8 @@
     <Compile Include="Codigo\Model\DTO\JogadorDTO.cs" />
     <Compile Include="Codigo\Model\DTO\PersonagemDTO.cs" />
     <Compile Include="Codigo\Model\DTO\ObjetoFisicoDTO.cs" />
+    <Compile Include="Codigo\Model\Utils\Espinho.cs" />
+    <Compile Include="Codigo\Model\Utils\Camera2DFollow.cs" />
     <Compile Include="Codigo\View\AnimationView.cs" />
     <Compile Include="Codigo\Controller\Utils\KeyboardUtils.cs" />
     <Compile Include="Codigo\Controller\GameController.cs" />
