@@ -12,6 +12,8 @@ namespace IgorFoundABug.Codigo.Controller
 		private ArmaController ArmaEquerda;
 		private RayCast2D SensorDireito;
 		private RayCast2D SensorEsquerdo;
+		private Timer TimerDireita;
+		private Timer TimerEsquerda;
 		public override void _Ready()
 		{
 			BotDTO.Vivo = true;
@@ -25,6 +27,10 @@ namespace IgorFoundABug.Codigo.Controller
 			BotDTO.AnimationPlaryer = GetChild<AnimationPlayer>(4);
 			SensorDireito = GetChild(1).GetChild<RayCast2D>(0);
 			SensorEsquerdo = GetChild(1).GetChild<RayCast2D>(1);
+			TimerDireita = GetChild(1).GetChild<Timer>(2);
+			TimerEsquerda = GetChild(1).GetChild<Timer>(3);
+			ArmaDireita = GetChild(2).GetChild(0) as ArmaController;
+			ArmaEquerda = GetChild(2).GetChild(1) as ArmaController;
 		}
 		public override void _PhysicsProcess(float delta)
 		{
@@ -44,22 +50,35 @@ namespace IgorFoundABug.Codigo.Controller
 			{
 				if (distanciaDireita < 30)
 				{
+					if (TimerDireita.IsStopped()) 
+						TimerDireita.Start();
 					BotDTO.Direcao = new Vector2(-1, 0);
 					MovimentoKinematicoBLL.Move2D(BotDTO);
+					return;
 				}
 			}
 			
 			var distanciaEsquerda = SensorBLL.Detectar(SensorEsquerdo, "player");
 			if (distanciaEsquerda !=null)
 			{
+				if (TimerEsquerda.IsStopped()) 
+					TimerEsquerda.Start();
 				BotDTO.Direcao = new Vector2(1, 0);
 				MovimentoKinematicoBLL.Move2D(BotDTO);
+				return;
 			}
 		}
 		private void Animar()
 		{
 
 		}
+		private void _on_TimerDireita_timeout()
+		{
+			ArmaDireita.Atirar(BotDTO, false);
+		}
+		private void _on_TimerEsquerda_timeout()
+		{
+			ArmaEquerda.Atirar(BotDTO, true);
+		}
 	}
 }
-

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Recursos/Sprites/gun.png" type="Texture" id=1]
 [ext_resource path="res://Recursos/Sprites/404bot.png" type="Texture" id=2]
 [ext_resource path="res://Codigo/Controller/Bot.cs" type="Script" id=3]
+[ext_resource path="res://Codigo/Controller/ArmaController.cs" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.98191, 6.83947 )
@@ -175,11 +176,11 @@ position = Vector2( -5, 0 )
 enabled = true
 cast_to = Vector2( -40, 0 )
 
-[node name="CabecaSendor" type="Area2D" parent="."]
+[node name="TimerDireita" type="Timer" parent="Sensores"]
+one_shot = true
 
-[node name="Cabeca" type="CollisionShape2D" parent="CabecaSendor"]
-position = Vector2( -0.0978756, -6.57264 )
-shape = SubResource( 2 )
+[node name="TimerEsquerda" type="Timer" parent="Sensores"]
+one_shot = true
 
 [node name="Armas" type="Node2D" parent="."]
 
@@ -189,6 +190,7 @@ z_index = 1
 texture = ExtResource( 1 )
 hframes = 2
 frame = 1
+script = ExtResource( 4 )
 
 [node name="ArmaEsquerda" type="Sprite" parent="Armas"]
 position = Vector2( -5.92093, 1.97364 )
@@ -197,6 +199,13 @@ texture = ExtResource( 1 )
 flip_h = true
 hframes = 2
 frame = 1
+script = ExtResource( 4 )
+
+[node name="CabecaSendor" type="Area2D" parent="."]
+
+[node name="Cabeca" type="CollisionShape2D" parent="CabecaSendor"]
+position = Vector2( -0.0978756, -6.57264 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -210,3 +219,5 @@ anims/Walk = SubResource( 4 )
 z_index = 2
 texture = ExtResource( 2 )
 hframes = 17
+[connection signal="timeout" from="Sensores/TimerDireita" to="." method="_on_TimerDireita_timeout"]
+[connection signal="timeout" from="Sensores/TimerEsquerda" to="." method="_on_TimerEsquerda_timeout"]

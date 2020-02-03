@@ -16,7 +16,7 @@ namespace IgorFoundABug.Codigo.Controller
 		{
 			IgorDTO.Vivo = true;
 			IgorDTO.Vida = 1.0f;
-			IgorDTO.Municao = 0;
+			IgorDTO.Municao = 3;
 			IgorDTO.Velocidade = 1f;
 			IgorDTO.Peso = 80;
 			IgorDTO.Gravidade = 9.8f;
@@ -45,7 +45,7 @@ namespace IgorFoundABug.Codigo.Controller
 			if (KeyboardUtils.GetKey("ui_select", Keystatus.Pressed) && IgorDTO.Municao != 0)
 			{
 				IgorDTO.Municao -= 1;
-				Arma.Atirar(IgorDTO);
+				Arma.Atirar(IgorDTO, IgorDTO.SpritePersonagem.FlipH);
 			}	
 			if (KeyboardUtils.GetKey("ui_up", Keystatus.Pressed))
 				GravidadeBLL.Pular(IgorDTO);
