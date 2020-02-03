@@ -138,5 +138,6 @@ hframes = 6
 visible = false
 texture = ExtResource( 2 )
 hframes = 5
+[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

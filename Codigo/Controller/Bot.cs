@@ -48,10 +48,10 @@ namespace IgorFoundABug.Codigo.Controller
 			var distanciaDireita = SensorBLL.Detectar(SensorDireito, "player");
 			if (distanciaDireita != null)
 			{
+				if (TimerDireita.IsStopped()) 
+					TimerDireita.Start();
 				if (distanciaDireita < 30)
 				{
-					if (TimerDireita.IsStopped()) 
-						TimerDireita.Start();
 					BotDTO.Direcao = new Vector2(-1, 0);
 					MovimentoKinematicoBLL.Move2D(BotDTO);
 					return;
@@ -63,9 +63,12 @@ namespace IgorFoundABug.Codigo.Controller
 			{
 				if (TimerEsquerda.IsStopped()) 
 					TimerEsquerda.Start();
-				BotDTO.Direcao = new Vector2(1, 0);
-				MovimentoKinematicoBLL.Move2D(BotDTO);
-				return;
+				if (distanciaEsquerda < 30)
+				{
+					BotDTO.Direcao = new Vector2(1, 0);
+					MovimentoKinematicoBLL.Move2D(BotDTO);
+					return;
+				}
 			}
 		}
 		private void Animar()

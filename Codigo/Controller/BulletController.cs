@@ -34,6 +34,10 @@ namespace IgorFoundABug.Codigo.Controller
 		{
 			AnimarExplosao();
 		}
+		private void _on_Bullet_area_entered(object area)
+		{
+			AnimarExplosao();
+		}
 		private void AnimarExplosao()
 		{
 			if (Animacao.CurrentAnimation == "Bullet")
