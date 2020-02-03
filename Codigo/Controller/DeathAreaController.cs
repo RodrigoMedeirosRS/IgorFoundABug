@@ -8,7 +8,7 @@ namespace IgorFoundABug.Codigo.Controller
         private void _on_Deathbox_body_entered(object body)
 		{
 			if ((body as Node).IsInGroup("player"))
-				(body as JogadorController).IgorDTO.Vivo = false;	
+				(body as JogadorController).personagemDTO.Vivo = false;	
 		}
     }
 }

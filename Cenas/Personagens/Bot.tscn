@@ -221,3 +221,4 @@ texture = ExtResource( 2 )
 hframes = 17
 [connection signal="timeout" from="Sensores/TimerDireita" to="." method="_on_TimerDireita_timeout"]
 [connection signal="timeout" from="Sensores/TimerEsquerda" to="." method="_on_TimerEsquerda_timeout"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

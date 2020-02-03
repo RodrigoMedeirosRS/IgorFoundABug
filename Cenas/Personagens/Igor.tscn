@@ -73,7 +73,6 @@ tracks/0/keys = {
 extents = Vector2( 4.0517, 7.50975 )
 
 [node name="Igor" type="KinematicBody2D" groups=[
-"personagem",
 "player",
 ]]
 script = ExtResource( 2 )

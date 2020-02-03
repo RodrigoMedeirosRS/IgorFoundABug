@@ -9,7 +9,7 @@ namespace IgorFoundABug.Codigo.Controller
 		{
 			if (!(body as Node).IsInGroup("player"))
 				return;
-			(body as JogadorController).IgorDTO.Municao += 3;
+			(body as JogadorController).personagemDTO.Municao += 3;
 			QueueFree();	
 		}
 	}

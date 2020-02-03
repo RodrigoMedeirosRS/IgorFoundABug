@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using IgorFoundABug.Codigo.Model.DTO;
 
 namespace IgorFoundABug.Codigo.Controller
 {
@@ -29,6 +30,10 @@ namespace IgorFoundABug.Codigo.Controller
 		private void _on_Bullet_body_entered(object body)
 		{
 			AnimarExplosao();
+			if ((body as Node).IsInGroup("personagem"))
+				(body as Bot).personagemDTO.Vivo = false;
+			else if ((body as Node).IsInGroup("player"))
+				(body as JogadorController).personagemDTO.Vivo = false;
 		}
 		private void _on_Timer_timeout()
 		{

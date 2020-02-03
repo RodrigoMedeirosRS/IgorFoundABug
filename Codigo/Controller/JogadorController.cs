@@ -10,61 +10,61 @@ namespace IgorFoundABug.Codigo.Controller
 {
 	public class JogadorController : KinematicBody2D
 	{
-		public JogadorDTO IgorDTO = new JogadorDTO();
+		public JogadorDTO personagemDTO = new JogadorDTO();
 		private ArmaController Arma;
 		public override void _Ready()
 		{
-			IgorDTO.Vivo = true;
-			IgorDTO.Vida = 1.0f;
-			IgorDTO.Municao = 3;
-			IgorDTO.Velocidade = 1f;
-			IgorDTO.Peso = 80;
-			IgorDTO.Gravidade = 9.8f;
-			IgorDTO.ForcaPulo = -20;
-			IgorDTO.Direcao = new Vector2(0,0);
-			IgorDTO.Corpo2D = this;
-			IgorDTO.UltimaAnimcacao = "";
-			IgorDTO.AnimationPlaryer = GetChild<AnimationPlayer>(0);
-			IgorDTO.SpritePersonagem = GetChild<Sprite>(1);
+			personagemDTO.Vivo = true;
+			personagemDTO.Vida = 1.0f;
+			personagemDTO.Municao = 3;
+			personagemDTO.Velocidade = 1f;
+			personagemDTO.Peso = 80;
+			personagemDTO.Gravidade = 9.8f;
+			personagemDTO.ForcaPulo = -20;
+			personagemDTO.Direcao = new Vector2(0,0);
+			personagemDTO.Corpo2D = this;
+			personagemDTO.UltimaAnimcacao = "";
+			personagemDTO.AnimationPlaryer = GetChild<AnimationPlayer>(0);
+			personagemDTO.SpritePersonagem = GetChild<Sprite>(1);
 			Arma = GetChild<Node2D>(3) as ArmaController;
 		}
 		public override void _PhysicsProcess(float delta)
 		{
-			GravidadeBLL.Gravidade2D(IgorDTO);
+			GravidadeBLL.Gravidade2D(personagemDTO);
 			Acoes();
 		}
 
 		private void Acoes()
 		{
-			if (IgorDTO.Vivo)
+			if (personagemDTO.Vivo)
 				Movimento();
 			Animar();
 		}
 		private void Movimento()
 		{
-			if (KeyboardUtils.GetKey("ui_select", Keystatus.Pressed) && IgorDTO.Municao != 0)
+			if (KeyboardUtils.GetKey("ui_select", Keystatus.Pressed) && personagemDTO.Municao != 0)
 			{
-				IgorDTO.Municao -= 1;
-				Arma.Atirar(IgorDTO, IgorDTO.SpritePersonagem.FlipH);
+				personagemDTO.Municao -= 1;
+				Arma.Atirar(personagemDTO, personagemDTO.SpritePersonagem.FlipH);
 			}	
 			if (KeyboardUtils.GetKey("ui_up", Keystatus.Pressed))
-				GravidadeBLL.Pular(IgorDTO);
+				GravidadeBLL.Pular(personagemDTO);
 			
-			IgorDTO.Direcao.x = (Convert.ToInt32(KeyboardUtils.GetKey("ui_right", Keystatus.Hold)) - Convert.ToInt32(KeyboardUtils.GetKey("ui_left", Keystatus.Hold)));
+			personagemDTO.Direcao.x = (Convert.ToInt32(KeyboardUtils.GetKey("ui_right", Keystatus.Hold)) - Convert.ToInt32(KeyboardUtils.GetKey("ui_left", Keystatus.Hold)));
 			
-			MovimentoKinematicoBLL.Move2D(IgorDTO);
+			MovimentoKinematicoBLL.Move2D(personagemDTO);
 		}
 		private void Animar()
 		{
-			if (IgorDTO.Vivo)
+			if (personagemDTO.Vivo)
 			{
-				AnimationView.ExecutarAnimacao(IgorDTO.Corpo2D.IsOnFloor() && IgorDTO.Direcao.x == 0, "Idle", IgorDTO);
-				AnimationView.ExecutarAnimacao(IgorDTO.Corpo2D.IsOnFloor() && IgorDTO.Direcao.x != 0, "Walk", IgorDTO);
-				AnimationView.ExecutarAnimacao(!IgorDTO.Corpo2D.IsOnFloor(), "Jump", IgorDTO);
-				Arma.Visible = IgorDTO.Municao != 0;
-				Arma.Scale = new Vector2(1 - (2 * Convert.ToInt32(AnimationView.Flip2D(IgorDTO))), 1);				
+				AnimationView.ExecutarAnimacao(personagemDTO.Corpo2D.IsOnFloor() && personagemDTO.Direcao.x == 0, "Idle", personagemDTO);
+				AnimationView.ExecutarAnimacao(personagemDTO.Corpo2D.IsOnFloor() && personagemDTO.Direcao.x != 0, "Walk", personagemDTO);
+				AnimationView.ExecutarAnimacao(!personagemDTO.Corpo2D.IsOnFloor(), "Jump", personagemDTO);
+				Arma.Visible = personagemDTO.Municao != 0;
+				Arma.Scale = new Vector2(1 - (2 * Convert.ToInt32(AnimationView.Flip2D(personagemDTO))), 1);				
 			}
-			AnimationView.ExecutarAnimacao(!IgorDTO.Vivo, "Morte", IgorDTO);
+			AnimationView.ExecutarAnimacao(!personagemDTO.Vivo, "Morte", personagemDTO);
 		}
 		private void _on_AnimationPlayer_animation_finished(String anim_name)
 		{

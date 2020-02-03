@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using IgorFoundABug.Codigo.View;
 using IgorFoundABug.Codigo.Model.BLL;
 using IgorFoundABug.Codigo.Model.DTO;
 
@@ -7,7 +8,7 @@ namespace IgorFoundABug.Codigo.Controller
 {
 	public class Bot : KinematicBody2D
 	{
-		PersonagemDTO BotDTO = new PersonagemDTO();
+		public PersonagemDTO personagemDTO = new PersonagemDTO();
 		private ArmaController ArmaDireita;
 		private ArmaController ArmaEquerda;
 		private RayCast2D SensorDireito;
@@ -16,35 +17,36 @@ namespace IgorFoundABug.Codigo.Controller
 		private Timer TimerEsquerda;
 		public override void _Ready()
 		{
-			BotDTO.Vivo = true;
-			BotDTO.Velocidade = 0.3f;
-			BotDTO.Peso = 80;
-			BotDTO.Gravidade = 9.8f;
-			BotDTO.ForcaPulo = -20;
-			BotDTO.Direcao = new Vector2(0,0);
-			BotDTO.Corpo2D = this;
-			BotDTO.UltimaAnimcacao = "";
-			BotDTO.AnimationPlaryer = GetChild<AnimationPlayer>(4);
+			personagemDTO.Vivo = true;
+			personagemDTO.Velocidade = 0.3f;
+			personagemDTO.Peso = 80;
+			personagemDTO.Gravidade = 9.8f;
+			personagemDTO.ForcaPulo = -20;
+			personagemDTO.Direcao = new Vector2(0,0);
+			personagemDTO.Corpo2D = this;
+			personagemDTO.UltimaAnimcacao = "";
+			personagemDTO.AnimationPlaryer = GetChild<AnimationPlayer>(4);
 			SensorDireito = GetChild(1).GetChild<RayCast2D>(0);
 			SensorEsquerdo = GetChild(1).GetChild<RayCast2D>(1);
 			TimerDireita = GetChild(1).GetChild<Timer>(2);
 			TimerEsquerda = GetChild(1).GetChild<Timer>(3);
 			ArmaDireita = GetChild(2).GetChild(0) as ArmaController;
 			ArmaEquerda = GetChild(2).GetChild(1) as ArmaController;
+			GetChild<CollisionShape2D>(0).Disabled = false;
 		}
 		public override void _PhysicsProcess(float delta)
 		{
-			GravidadeBLL.Gravidade2D(BotDTO);
 			Acoes();
 		}
 		private void Acoes()
 		{
-			if (BotDTO.Vivo)
+			if (personagemDTO.Vivo)
 				Movimento();
 			Animar();
 		}
 		private void Movimento()
 		{
+			GravidadeBLL.Gravidade2D(personagemDTO);
 			var distanciaDireita = SensorBLL.Detectar(SensorDireito, "player");
 			if (distanciaDireita != null)
 			{
@@ -52,8 +54,8 @@ namespace IgorFoundABug.Codigo.Controller
 					TimerDireita.Start();
 				if (distanciaDireita < 30)
 				{
-					BotDTO.Direcao = new Vector2(-1, 0);
-					MovimentoKinematicoBLL.Move2D(BotDTO);
+					personagemDTO.Direcao = new Vector2(-1, 0);
+					MovimentoKinematicoBLL.Move2D(personagemDTO);
 					return;
 				}
 			}
@@ -65,23 +67,36 @@ namespace IgorFoundABug.Codigo.Controller
 					TimerEsquerda.Start();
 				if (distanciaEsquerda < 30)
 				{
-					BotDTO.Direcao = new Vector2(1, 0);
-					MovimentoKinematicoBLL.Move2D(BotDTO);
+					personagemDTO.Direcao = new Vector2(1, 0);
+					MovimentoKinematicoBLL.Move2D(personagemDTO);
 					return;
 				}
 			}
 		}
 		private void Animar()
 		{
+			if(personagemDTO.Vivo)
+			{
 
+			}
+			AnimationView.ExecutarAnimacao(!personagemDTO.Vivo, "Morte", personagemDTO);
 		}
 		private void _on_TimerDireita_timeout()
 		{
-			ArmaDireita.Atirar(BotDTO, false);
+			ArmaDireita.Atirar(personagemDTO, false);
 		}
 		private void _on_TimerEsquerda_timeout()
 		{
-			ArmaEquerda.Atirar(BotDTO, true);
+			ArmaEquerda.Atirar(personagemDTO, true);
+		}
+		private void _on_AnimationPlayer_animation_started(String anim_name)
+		{
+			if (anim_name == "Morte")
+			{
+				GetChild<CollisionShape2D>(0).Disabled = true;
+				TimerDireita.Stop();
+				TimerEsquerda.Stop();
+			}
 		}
 	}
 }
