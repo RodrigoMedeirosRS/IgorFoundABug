@@ -5,25 +5,39 @@ namespace IgorFoundABug.Codigo.Controller
 {
 	public class BulletController : Area2D
 	{
-		private AnimationPlayer animacao;
+		private AnimationPlayer Animacao;
+		private Timer Tempo;
+		private bool Inveritdo;
 		public override void _Ready()
 		{
-			animacao = GetChild<AnimationPlayer>(1);
+			Animacao = GetChild<AnimationPlayer>(1);
+			Tempo = GetChild<Timer>(2);
 		}
 		public override void _PhysicsProcess(float delta)
 		{
-			if (animacao.CurrentAnimation == "Bullet")
-				Position += new Vector2(2,0);
+			if (Animacao.CurrentAnimation == "Bullet")
+				Position = Inveritdo ? Position - new Vector2(2,0) : Position + new Vector2(2,0);
+				
 		}
-		public void Shoot(Vector2 inicio)
+		public void Shoot(Vector2 inicio, bool invertido)
 		{
+			Inveritdo = invertido;
 			GlobalPosition = inicio;
-			animacao.Play("Bullet", -1, 1);
+			Animacao.Play("Bullet", -1, 1);
+			Tempo.Start();
 		}
 		private void _on_Bullet_body_entered(object body)
 		{
-			if (animacao.CurrentAnimation == "Bullet")
-				animacao.Play("Explosao", -1, 1);
+			AnimarExplosao();
+		}
+		private void _on_Timer_timeout()
+		{
+			AnimarExplosao();
+		}
+		private void AnimarExplosao()
+		{
+			if (Animacao.CurrentAnimation == "Bullet")
+				Animacao.Play("Explosao", -1, 1);
 		}
 	}
 }

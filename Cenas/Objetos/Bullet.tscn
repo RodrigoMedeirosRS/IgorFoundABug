@@ -119,20 +119,24 @@ script = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.393985, -0.508037 )
 shape = SubResource( 1 )
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Explosao"
 anims/Bullet = SubResource( 2 )
 anims/Explosao = SubResource( 3 )
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [node name="Bullet" type="Sprite" parent="."]
-visible = false
 position = Vector2( -0.106944, 0 )
 texture = ExtResource( 1 )
 hframes = 6
 
 [node name="Explosion" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 2 )
 hframes = 5
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

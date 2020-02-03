@@ -11,10 +11,11 @@ namespace IgorFoundABug.Codigo.Controller
         {
             bulletPool = ObjectPoolingBLL.criarPool(GetParent().GetParent().GetParent().GetChild<Node2D>(1),"res://Cenas/Objetos/Bullet.tscn",10);  
         }
-        public void Atirar(bool Inverido)
+        public void Atirar(bool invertido)
         {
             BulletController disparo = (ObjectPoolingBLL.executarPooling(bulletPool) as BulletController);
-            disparo.Shoot(new Vector2(GlobalPosition.x +3, GlobalPosition.y));
+            Vector2 direcao = invertido ? new Vector2(GlobalPosition.x -10, GlobalPosition.y) : new Vector2(GlobalPosition.x +10, GlobalPosition.y);
+            disparo.Shoot(direcao, invertido);
         }
     }
 
