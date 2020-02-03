@@ -7,7 +7,7 @@ namespace IgorFoundABug.Codigo.Model.BLL
     {
         public static void Move2D(PersonagemDTO personagemDTO)
         {
-            personagemDTO.Corpo2D.MoveAndCollide(personagemDTO.Direcao);
+            personagemDTO.Corpo2D.MoveAndCollide(personagemDTO.Direcao * personagemDTO.Velocidade);
         }
     }
 }

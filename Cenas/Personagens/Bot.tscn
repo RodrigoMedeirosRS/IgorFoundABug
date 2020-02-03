@@ -4,6 +4,12 @@
 [ext_resource path="res://Recursos/Sprites/404bot.png" type="Texture" id=2]
 [ext_resource path="res://Codigo/Controller/Bot.cs" type="Script" id=3]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.98191, 6.83947 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3.89118, 0.726912 )
+
 [sub_resource type="Animation" id=6]
 resource_name = "Hit"
 length = 0.7
@@ -147,24 +153,50 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3.89118, 0.726912 )
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.98191, 6.83947 )
-
-[node name="Bot" type="KinematicBody2D"]
+[node name="Bot" type="KinematicBody2D" groups=[
+"personagem",
+]]
 script = ExtResource( 3 )
 
-[node name="Sensores" type="Node2D" parent="."]
+[node name="Corpo" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0225163, 1.07257 )
+shape = SubResource( 1 )
 
-[node name="Esquerda" type="RayCast2D" parent="Sensores"]
-position = Vector2( -5, 0 )
-cast_to = Vector2( -40, 0 )
+[node name="Sensores" type="Node2D" parent="."]
+position = Vector2( 0, -4 )
 
 [node name="Direita" type="RayCast2D" parent="Sensores"]
 position = Vector2( 5, 0 )
+enabled = true
 cast_to = Vector2( 40, 0 )
+
+[node name="Esquerda" type="RayCast2D" parent="Sensores"]
+position = Vector2( -5, 0 )
+enabled = true
+cast_to = Vector2( -40, 0 )
+
+[node name="CabecaSendor" type="Area2D" parent="."]
+
+[node name="Cabeca" type="CollisionShape2D" parent="CabecaSendor"]
+position = Vector2( -0.0978756, -6.57264 )
+shape = SubResource( 2 )
+
+[node name="Armas" type="Node2D" parent="."]
+
+[node name="ArmaDireita" type="Sprite" parent="Armas"]
+position = Vector2( 5.91071, 1.97364 )
+z_index = 1
+texture = ExtResource( 1 )
+hframes = 2
+frame = 1
+
+[node name="ArmaEsquerda" type="Sprite" parent="Armas"]
+position = Vector2( -5.92093, 1.97364 )
+z_index = 1
+texture = ExtResource( 1 )
+flip_h = true
+hframes = 2
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -175,29 +207,6 @@ anims/Morte = SubResource( 7 )
 anims/Walk = SubResource( 4 )
 
 [node name="Robo" type="Sprite" parent="."]
-z_index = 1
+z_index = 2
 texture = ExtResource( 2 )
 hframes = 17
-
-[node name="Cabeca" type="CollisionShape2D" parent="."]
-position = Vector2( -0.0978756, -6.57264 )
-shape = SubResource( 2 )
-
-[node name="Corpo" type="CollisionShape2D" parent="."]
-position = Vector2( -0.0225163, 1.07257 )
-shape = SubResource( 1 )
-
-[node name="Armas" type="Node2D" parent="."]
-
-[node name="ArmaDireita" type="Sprite" parent="Armas"]
-position = Vector2( 5.91071, 1.97364 )
-texture = ExtResource( 1 )
-hframes = 2
-frame = 1
-
-[node name="ArmaEsquerda" type="Sprite" parent="Armas"]
-position = Vector2( -5.92093, 1.97364 )
-texture = ExtResource( 1 )
-flip_h = true
-hframes = 2
-frame = 1

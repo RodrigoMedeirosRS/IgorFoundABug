@@ -61,6 +61,7 @@
     <Compile Include="Codigo\Model\BLL\GravidadeBLL.cs" />
     <Compile Include="Codigo\Model\BLL\MovimentoKinematicoBLL.cs" />
     <Compile Include="Codigo\Model\BLL\ObjectPoolingBLL.cs" />
+    <Compile Include="Codigo\Model\BLL\SensorBLL.cs" />
     <Compile Include="Codigo\Model\DTO\JogadorDTO.cs" />
     <Compile Include="Codigo\Model\DTO\PersonagemDTO.cs" />
     <Compile Include="Codigo\Model\DTO\ObjetoFisicoDTO.cs" />
