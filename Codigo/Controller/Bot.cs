@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using IgorFoundABug.Codigo.View;
 using IgorFoundABug.Codigo.Model.BLL;
 using IgorFoundABug.Codigo.Model.DTO;
@@ -15,6 +16,7 @@ namespace IgorFoundABug.Codigo.Controller
 		private RayCast2D SensorEsquerdo;
 		private Timer TimerDireita;
 		private Timer TimerEsquerda;
+		private List<Node2D> PowerUP;
 		public override void _Ready()
 		{
 			personagemDTO.Vivo = true;
@@ -32,6 +34,7 @@ namespace IgorFoundABug.Codigo.Controller
 			TimerEsquerda = GetChild(1).GetChild<Timer>(3);
 			ArmaDireita = GetChild(2).GetChild(0) as ArmaController;
 			ArmaEquerda = GetChild(2).GetChild(1) as ArmaController;
+			PowerUP = ObjectPoolingBLL.criarPool(GetParent<Node2D>(), "res://Cenas/Objetos/PowerUP.tscn", 1);
 			GetChild<CollisionShape2D>(0).Disabled = false;
 		}
 		public override void _PhysicsProcess(float delta)
@@ -97,6 +100,15 @@ namespace IgorFoundABug.Codigo.Controller
 				TimerDireita.Stop();
 				TimerEsquerda.Stop();
 			}
+		}
+		private void _on_AnimationPlayer_animation_finished(String anim_name)
+		{
+			if (anim_name == "Morte")
+			{
+				PowerUP[0].Visible = true;
+				PowerUP[0].Position = new Vector2(0, 0);
+			}
+				
 		}
 	}
 }

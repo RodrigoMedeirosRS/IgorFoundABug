@@ -7,7 +7,7 @@ namespace IgorFoundABug.Codigo.Controller
 {
     public class ArmaController : Node2D
     {
-        private List<Node> bulletPool;
+        private List<Node2D> bulletPool;
         public override void _Ready()
         {
             bulletPool = ObjectPoolingBLL.criarPool(GetParent().GetParent().GetParent().GetChild<Node2D>(1),"res://Cenas/Objetos/Bullet.tscn",10);  
