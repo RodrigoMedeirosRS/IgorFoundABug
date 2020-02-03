@@ -42,8 +42,11 @@ namespace IgorFoundABug.Codigo.Controller
 		}
 		private void Movimento()
 		{
-			if (KeyboardUtils.GetKey("ui_select", Keystatus.Pressed))
-				Arma.Atirar(IgorDTO.SpritePersonagem.FlipH);
+			if (KeyboardUtils.GetKey("ui_select", Keystatus.Pressed) && IgorDTO.Municao != 0)
+			{
+				IgorDTO.Municao -= 1;
+				Arma.Atirar(IgorDTO);
+			}	
 			if (KeyboardUtils.GetKey("ui_up", Keystatus.Pressed))
 				GravidadeBLL.Pular(IgorDTO);
 			

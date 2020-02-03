@@ -86,6 +86,7 @@ anims/Walk = SubResource( 4 )
 z_index = 1
 texture = ExtResource( 1 )
 hframes = 16
+frame = 11
 
 [node name="Colisor" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.4972 )

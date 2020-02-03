@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Codigo\Controller\ArmaController.cs" />
+    <Compile Include="Codigo\Controller\Bot.cs" />
     <Compile Include="Codigo\Controller\BulletController.cs" />
     <Compile Include="Codigo\Controller\DeathAreaController.cs" />
     <Compile Include="Codigo\Controller\PowerUPController.cs" />
