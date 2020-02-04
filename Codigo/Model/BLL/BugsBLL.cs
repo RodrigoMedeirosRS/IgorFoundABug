@@ -1,3 +1,4 @@
+using Godot;
 using IgorFoundABug.Codigo.Controller;
 
 namespace IgorFoundABug.Codigo.Model.BLL
@@ -6,10 +7,32 @@ namespace IgorFoundABug.Codigo.Model.BLL
     {
         public static int Vida = 0;
         public static int Municao = 0;
-        public static void Morre(JogadorController jogador)
+        public static bool FlyBug = false;
+        public static int Combo = 0;
+        public static Vector2 Spawnpoint = new Vector2(34.28f ,25.9883f);
+        public static JogadorController jogador;
+        public static void Morre()
         {
+            FlyBug = false;
             Vida -= 1;
             Municao = jogador.personagemDTO.Municao > 0 ? -1 : 0;
+            if (Municao == 0 && RandomTesteBLL.testar(0.3))
+                FlyBug = true;
+        }
+        public static void FullCombo()
+        {
+            if (Combo >= 50 && !FlyBug && Municao >= 0)
+            {
+                jogador.personagemDTO.SpritePersonagem.FlipV = true;
+                jogador.personagemDTO.Velocidade = 2f;
+                jogador.personagemDTO.ForcaPulo = -40;
+            }
+        }
+        public static void NoCombo()
+        {
+            jogador.personagemDTO.SpritePersonagem.FlipV = false;
+            jogador.personagemDTO.Velocidade = 1f;
+            jogador.personagemDTO.ForcaPulo = -20;
         }
     }
 }

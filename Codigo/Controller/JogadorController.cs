@@ -12,8 +12,11 @@ namespace IgorFoundABug.Codigo.Controller
 	{
 		public JogadorDTO personagemDTO = new JogadorDTO();
 		private ArmaController Arma;
+		private Timer Combo;
 		public override void _Ready()
 		{
+			BugsBLL.jogador = this;
+			GlobalPosition = BugsBLL.Spawnpoint;
 			personagemDTO.Vivo = true;
 			personagemDTO.Vida = 1.0f;
 			personagemDTO.Municao = BugsBLL.Municao;
@@ -26,11 +29,13 @@ namespace IgorFoundABug.Codigo.Controller
 			personagemDTO.UltimaAnimcacao = "";
 			personagemDTO.AnimationPlayer = GetNode<AnimationPlayer>("./AnimationPlayer");
 			personagemDTO.SpritePersonagem = GetNode<Sprite>("./SpriteDoIgor");
+			Combo = GetNode<Timer>("./Combo");
 			Arma =  GetNode<Node2D>("./Arma") as ArmaController;
 		}
 		public override void _PhysicsProcess(float delta)
 		{
-			GravidadeBLL.Gravidade2D(personagemDTO);
+			if (!BugsBLL.FlyBug)
+				GravidadeBLL.Gravidade2D(personagemDTO);
 			Acoes();
 		}
 
@@ -42,16 +47,27 @@ namespace IgorFoundABug.Codigo.Controller
 		}
 		private void Movimento()
 		{
+			BugsBLL.FullCombo();
 			if (KeyboardUtils.GetKey("ui_select", Keystatus.Pressed) && personagemDTO.Municao != 0)
 			{
 				personagemDTO.Municao -= 1;
 				Arma.Atirar(personagemDTO, personagemDTO.SpritePersonagem.FlipH);
 			}	
 			if (KeyboardUtils.GetKey("ui_up", Keystatus.Pressed))
+			{
+				BugsBLL.FlyBug = false;
 				GravidadeBLL.Pular(personagemDTO);
+				BugsBLL.NoCombo();
+			}
 			
 			personagemDTO.Direcao.x = (Convert.ToInt32(KeyboardUtils.GetKey("ui_right", Keystatus.Hold)) - Convert.ToInt32(KeyboardUtils.GetKey("ui_left", Keystatus.Hold)));
-			
+			if(KeyboardUtils.GetKey("ui_right", Keystatus.Pressed) || KeyboardUtils.GetKey("ui_left", Keystatus.Pressed))
+			{
+				GD.Print(BugsBLL.Combo);
+				BugsBLL.Combo += 1;
+				Combo.Start(1);
+			}
+				
 			MovimentoKinematicoBLL.Move2D(personagemDTO);
 		}
 		private void Animar()
@@ -60,17 +76,22 @@ namespace IgorFoundABug.Codigo.Controller
 			{
 				AnimationView.ExecutarAnimacao(personagemDTO.Corpo2D.IsOnFloor() && personagemDTO.Direcao.x == 0, "Idle", personagemDTO);
 				AnimationView.ExecutarAnimacao(personagemDTO.Corpo2D.IsOnFloor() && personagemDTO.Direcao.x != 0, "Walk", personagemDTO);
-				AnimationView.ExecutarAnimacao(!personagemDTO.Corpo2D.IsOnFloor(), "Jump", personagemDTO);
+				AnimationView.ExecutarAnimacao(!personagemDTO.Corpo2D.IsOnFloor() && !BugsBLL.FlyBug,"Jump", personagemDTO);
+				AnimationView.ExecutarAnimacao(BugsBLL.FlyBug,"FlyBug", personagemDTO);
 				Arma.Visible = personagemDTO.Municao != 0;
-				Arma.Scale = new Vector2(1 - (2 * Convert.ToInt32(AnimationView.Flip2D(personagemDTO))), 1);				
+				Arma.Scale = new Vector2(1 - (2 * Convert.ToInt32(AnimationView.Flip2D(personagemDTO))), 1);
 			}
 			AnimationView.ExecutarAnimacao(!personagemDTO.Vivo, "Morte", personagemDTO);
+		}
+		private void _on_Combo_timeout()
+		{
+			BugsBLL.Combo = 0;
 		}
 		private void _on_AnimationPlayer_animation_finished(String anim_name)
 		{
 			if (anim_name == "Morte")
 			{
-				BugsBLL.Morre(this);
+				BugsBLL.Morre();
 				GetTree().ReloadCurrentScene();
 			}
 		}
