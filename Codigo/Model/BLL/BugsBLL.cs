@@ -12,20 +12,21 @@ namespace IgorFoundABug.Codigo.Model.BLL
         public static Vector2 Spawnpoint = new Vector2(34.28f ,25.9883f);
         public static JogadorController jogador;
         public static void Morre()
-        {
+        {  
             FlyBug = false;
             Vida -= 1;
             Municao = jogador.personagemDTO.Municao > 0 ? -1 : 0;
-            if (Municao == 0 && RandomTesteBLL.testar(0.3))
+            if ((Municao == 0 && RandomTesteBLL.testar(0.3)) || jogador.personagemDTO.SpritePersonagem.FlipV == true)
                 FlyBug = true;
         }
         public static void FullCombo()
         {
-            if (Combo >= 50 && !FlyBug && Municao >= 0)
+            if (Combo >= 50 && !FlyBug)
             {
                 jogador.personagemDTO.SpritePersonagem.FlipV = true;
                 jogador.personagemDTO.Velocidade = 2f;
                 jogador.personagemDTO.ForcaPulo = -40;
+                jogador.personagemDTO.Municao = 0;
             }
         }
         public static void NoCombo()

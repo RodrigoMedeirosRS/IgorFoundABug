@@ -63,7 +63,6 @@ namespace IgorFoundABug.Codigo.Controller
 			personagemDTO.Direcao.x = (Convert.ToInt32(KeyboardUtils.GetKey("ui_right", Keystatus.Hold)) - Convert.ToInt32(KeyboardUtils.GetKey("ui_left", Keystatus.Hold)));
 			if(KeyboardUtils.GetKey("ui_right", Keystatus.Pressed) || KeyboardUtils.GetKey("ui_left", Keystatus.Pressed))
 			{
-				GD.Print(BugsBLL.Combo);
 				BugsBLL.Combo += 1;
 				Combo.Start(1);
 			}
