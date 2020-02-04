@@ -12,7 +12,7 @@ namespace IgorFoundABug.Codigo.Model.Utils
         }
         public override void _Process(float delta)
         {
-            Position = new Vector2(player.Position.x, 23.902f);
+            Position = new Vector2(player.Position.x, 33.902f);
         }
     }
 }

@@ -17,25 +17,23 @@ extents = Vector2( 55.3132, 3.03217 )
 extents = Vector2( 516.44, 10 )
 
 [node name="Base" type="Node2D"]
+position = Vector2( 0, 10 )
 script = ExtResource( 2 )
 
 [node name="Jogador" type="Node" parent="."]
 
 [node name="Igor" parent="Jogador" instance=ExtResource( 1 )]
-position = Vector2( 32.9631, 21.2307 )
+position = Vector2( 32.963, 31.231 )
 
 [node name="Camera2D" type="Camera2D" parent="Jogador"]
-position = Vector2( 34.1561, 23.9024 )
+position = Vector2( 34.156, 33.902 )
 current = true
 process_mode = 0
 drag_margin_v_enabled = true
 drag_margin_top = 1.0
 script = ExtResource( 4 )
 
-[node name="Spawners" type="Node2D" parent="."]
-
-[node name="Bot" parent="Spawners" instance=ExtResource( 7 )]
-position = Vector2( 321.109, 18.9549 )
+[node name="Spawners" type="Node" parent="."]
 
 [node name="Objetos" type="Node" parent="."]
 
@@ -50,6 +48,9 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 93.8313, 0 )
 shape = SubResource( 2 )
+
+[node name="Bot" parent="Objetos" instance=ExtResource( 7 )]
+position = Vector2( 321.109, 40 )
 
 [node name="Prision" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
