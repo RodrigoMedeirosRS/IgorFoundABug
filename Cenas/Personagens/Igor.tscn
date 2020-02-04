@@ -5,7 +5,7 @@
 [ext_resource path="res://Recursos/Sprites/gun.png" type="Texture" id=3]
 [ext_resource path="res://Codigo/Controller/ArmaController.cs" type="Script" id=4]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 resource_name = "FlyBug"
 length = 0.4
 loop = true
@@ -34,8 +34,7 @@ tracks/1/keys = {
 "values": [ 9 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Idle"
+[sub_resource type="Animation" id=2]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -63,8 +62,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Jump"
+[sub_resource type="Animation" id=3]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteDoIgor:frame")
@@ -91,8 +89,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Morte"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteDoIgor:frame")
 tracks/0/interp = 1
@@ -118,7 +115,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -146,7 +143,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 4.0517, 7.50975 )
 
 [node name="Igor" type="KinematicBody2D" groups=[
@@ -156,11 +153,11 @@ script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/FlyBug = SubResource( 6 )
-anims/Idle = SubResource( 1 )
-anims/Jump = SubResource( 2 )
-anims/Morte = SubResource( 3 )
-anims/Walk = SubResource( 4 )
+anims/FlyBug = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/Morte = SubResource( 4 )
+anims/Walk = SubResource( 5 )
 
 [node name="SpriteDoIgor" type="Sprite" parent="."]
 z_index = 1
@@ -170,7 +167,7 @@ frame = 5
 
 [node name="Colisor" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.4972 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Arma" type="Node2D" parent="."]
 script = ExtResource( 4 )

@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Igor Found a Bug"
-run/main_scene="res://Intro.tscn"
+run/main_scene="res://Base.tscn"
 config/icon="res://icon.png"
 
 [display]

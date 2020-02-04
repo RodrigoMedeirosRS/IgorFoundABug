@@ -10,7 +10,7 @@ namespace IgorFoundABug.Codigo.Controller
         private List<Node> bulletPool;
         public override void _Ready()
         {
-            bulletPool = ObjectPoolingBLL.criarPool(GetNode<Node>("/root/Base/Spawners"),"res://Cenas/Objetos/Bullet.tscn",10);  
+            bulletPool = ObjectPoolingBLL.criarPool(GetNode<Node>("/root/Base/Level/Spawners"),"res://Cenas/Objetos/Bullet.tscn",10);  
         }
         public void Atirar(PersonagemDTO personagem, bool invertido)
         {
