@@ -16,7 +16,7 @@ namespace IgorFoundABug.Codigo.Controller
 		{
 			personagemDTO.Vivo = true;
 			personagemDTO.Vida = 1.0f;
-			personagemDTO.Municao = 0;
+			personagemDTO.Municao = BugsBLL.Municao;
 			personagemDTO.Velocidade = 1f;
 			personagemDTO.Peso = 80;
 			personagemDTO.Gravidade = 9.8f;
@@ -69,7 +69,10 @@ namespace IgorFoundABug.Codigo.Controller
 		private void _on_AnimationPlayer_animation_finished(String anim_name)
 		{
 			if (anim_name == "Morte")
+			{
+				BugsBLL.Morre(this);
 				GetTree().ReloadCurrentScene();
+			}
 		}
 	}
 }

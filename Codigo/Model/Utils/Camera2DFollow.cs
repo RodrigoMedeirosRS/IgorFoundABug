@@ -1,4 +1,5 @@
 using Godot;
+using IgorFoundABug.Codigo.Model.BLL;
 using IgorFoundABug.Codigo.Model.DTO;
 using IgorFoundABug.Codigo.Controller;
 
@@ -23,6 +24,7 @@ namespace IgorFoundABug.Codigo.Model.Utils
         {
             hudMunicao.Visible = jogadorDTO.Municao != 0;
             marcadorDeMunicao.Text = jogadorDTO.Municao.ToString();
+            marcadorDeVida.Text = BugsBLL.Vida.ToString();
         }
         public override void _Process(float delta)
         {
