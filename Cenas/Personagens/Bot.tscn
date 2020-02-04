@@ -11,7 +11,7 @@ extents = Vector2( 3.98191, 6.83947 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3.89118, 0.726912 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "Hit"
 length = 0.7
 loop = true
@@ -40,8 +40,7 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Idle"
+[sub_resource type="Animation" id=4]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -97,7 +96,7 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "Morte"
 length = 0.7
 tracks/0/type = "value"
@@ -125,8 +124,7 @@ tracks/1/keys = {
 "values": [ false, false ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Walk"
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -209,16 +207,17 @@ shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Hit = SubResource( 6 )
-anims/Idle = SubResource( 3 )
+anims/Hit = SubResource( 3 )
+anims/Idle = SubResource( 4 )
 anims/Jump = SubResource( 5 )
-anims/Morte = SubResource( 7 )
-anims/Walk = SubResource( 4 )
+anims/Morte = SubResource( 6 )
+anims/Walk = SubResource( 7 )
 
 [node name="Robo" type="Sprite" parent="."]
 z_index = 2
 texture = ExtResource( 2 )
 hframes = 17
+frame = 4
 [connection signal="timeout" from="Sensores/TimerDireita" to="." method="_on_TimerDireita_timeout"]
 [connection signal="timeout" from="Sensores/TimerEsquerda" to="." method="_on_TimerEsquerda_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

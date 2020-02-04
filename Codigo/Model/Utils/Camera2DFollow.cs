@@ -8,7 +8,7 @@ namespace IgorFoundABug.Codigo.Model.Utils
         public KinematicBody2D player;
         public override void _Ready()
         {
-            player = GetParent().GetChild<KinematicBody2D>(0);
+            player = GetNode<KinematicBody2D>("/root/Base/Jogador/Igor");
         }
         public override void _Process(float delta)
         {

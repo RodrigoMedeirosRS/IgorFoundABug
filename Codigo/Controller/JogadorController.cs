@@ -24,9 +24,9 @@ namespace IgorFoundABug.Codigo.Controller
 			personagemDTO.Direcao = new Vector2(0,0);
 			personagemDTO.Corpo2D = this;
 			personagemDTO.UltimaAnimcacao = "";
-			personagemDTO.AnimationPlaryer = GetChild<AnimationPlayer>(0);
-			personagemDTO.SpritePersonagem = GetChild<Sprite>(1);
-			Arma = GetChild<Node2D>(3) as ArmaController;
+			personagemDTO.AnimationPlaryer = GetNode<AnimationPlayer>("./AnimationPlayer");
+			personagemDTO.SpritePersonagem = GetNode<Sprite>("./SpriteDoIgor");
+			Arma =  GetNode<Node2D>("./Arma") as ArmaController;
 		}
 		public override void _PhysicsProcess(float delta)
 		{

@@ -11,8 +11,8 @@ namespace IgorFoundABug.Codigo.Controller
 		private bool Inveritdo;
 		public override void _Ready()
 		{
-			Animacao = GetChild<AnimationPlayer>(1);
-			Tempo = GetChild<Timer>(2);
+			Animacao = GetNode<AnimationPlayer>("./AnimationPlayer");
+			Tempo = GetNode<Timer>("./Timer");
 		}
 		public override void _PhysicsProcess(float delta)
 		{

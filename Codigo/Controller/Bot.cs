@@ -27,15 +27,15 @@ namespace IgorFoundABug.Codigo.Controller
 			personagemDTO.Direcao = new Vector2(0,0);
 			personagemDTO.Corpo2D = this;
 			personagemDTO.UltimaAnimcacao = "";
-			personagemDTO.AnimationPlaryer = GetChild<AnimationPlayer>(4);
-			SensorDireito = GetChild(1).GetChild<RayCast2D>(0);
-			SensorEsquerdo = GetChild(1).GetChild<RayCast2D>(1);
-			TimerDireita = GetChild(1).GetChild<Timer>(2);
-			TimerEsquerda = GetChild(1).GetChild<Timer>(3);
-			ArmaDireita = GetChild(2).GetChild(0) as ArmaController;
-			ArmaEquerda = GetChild(2).GetChild(1) as ArmaController;
+			personagemDTO.AnimationPlaryer = GetNode<AnimationPlayer>("./AnimationPlayer");
+			SensorDireito = GetNode<RayCast2D>("./Sensores/Direita");
+			SensorEsquerdo = GetNode<RayCast2D>("./Sensores/Esquerda");
+			TimerDireita = GetNode<Timer>("./Sensores/TimerDireita");
+			TimerEsquerda = GetNode<Timer>("./Sensores/TimerEsquerda");
+			ArmaDireita = GetNode<Node>("./Armas/ArmaDireita") as ArmaController;
+			ArmaEquerda = GetNode<Node>("./Armas/ArmaEsquerda") as ArmaController;
 			PowerUP = ObjectPoolingBLL.criarPool(GetNode<Node>("/root/Base/Spawners"), "res://Cenas/Objetos/PowerUP.tscn", 1);
-			GetChild<CollisionShape2D>(0).Disabled = false;
+			GetNode<CollisionShape2D>("./Corpo").Disabled = false;
 		}
 		public override void _PhysicsProcess(float delta)
 		{
@@ -96,7 +96,7 @@ namespace IgorFoundABug.Codigo.Controller
 		{
 			if (anim_name == "Morte")
 			{
-				GetChild<CollisionShape2D>(0).Disabled = true;
+				GetNode<CollisionShape2D>("./Corpo").Disabled = true;
 				TimerDireita.Stop();
 				TimerEsquerda.Stop();
 			}
@@ -106,7 +106,7 @@ namespace IgorFoundABug.Codigo.Controller
 			if (anim_name == "Morte")
 			{
 				PowerUPController powerUP = (ObjectPoolingBLL.executarPooling(PowerUP) as PowerUPController);
-				powerUP.Dropar(new Vector2(GlobalPosition.x, GlobalPosition.y));
+				powerUP.Drop(GlobalPosition);
 			}
 				
 		}
