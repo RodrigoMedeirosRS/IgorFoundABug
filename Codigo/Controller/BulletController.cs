@@ -32,6 +32,8 @@ namespace IgorFoundABug.Codigo.Controller
 				(body as Bot).personagemDTO.Vivo = false;
 			else if ((body as Node).IsInGroup("player"))
 				(body as JogadorController).personagemDTO.Vivo = false;
+			else if ((body as Node).IsInGroup("destruivel"))
+				(body as BoxController).personagemDTO.Vivo = false;
 		}
 		private void _on_Timer_timeout()
 		{
