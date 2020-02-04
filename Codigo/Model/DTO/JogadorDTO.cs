@@ -1,5 +1,3 @@
-using System;
-
 namespace IgorFoundABug.Codigo.Model.DTO
 {
     public class JogadorDTO : PersonagemDTO

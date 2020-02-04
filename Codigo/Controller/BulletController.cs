@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using IgorFoundABug.Codigo.Model.DTO;
 
 namespace IgorFoundABug.Codigo.Controller
 {

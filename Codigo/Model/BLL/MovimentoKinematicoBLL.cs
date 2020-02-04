@@ -1,4 +1,3 @@
-using Godot;
 using IgorFoundABug.Codigo.Model.DTO;
 
 namespace IgorFoundABug.Codigo.Model.BLL
