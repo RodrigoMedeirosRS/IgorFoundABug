@@ -5,3 +5,5 @@
 [node name="Base" type="AudioStreamPlayer2D"]
 position = Vector2( 0, 10 )
 script = ExtResource( 2 )
+
+[node name="NivelCarregado" type="Node2D" parent="."]

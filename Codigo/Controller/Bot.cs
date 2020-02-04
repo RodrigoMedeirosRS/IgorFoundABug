@@ -34,7 +34,7 @@ namespace IgorFoundABug.Codigo.Controller
 			TimerEsquerda = GetNode<Timer>("./Sensores/TimerEsquerda");
 			ArmaDireita = GetNode<Node>("./Armas/ArmaDireita") as ArmaController;
 			ArmaEquerda = GetNode<Node>("./Armas/ArmaEsquerda") as ArmaController;
-			PowerUP = ObjectPoolingBLL.criarPool(GetNode<Node>("/root/Base/Level/Spawners"), "res://Cenas/Objetos/PowerUP.tscn", 1);
+			PowerUP = ObjectPoolingBLL.criarPool(GetNode<Node>("/root/Base/NivelCarregado/Level/Spawners"), "res://Cenas/Objetos/PowerUP.tscn", 1);
 			GetNode<CollisionShape2D>("./Corpo").Disabled = false;
 		}
 		public override void _PhysicsProcess(float delta)
