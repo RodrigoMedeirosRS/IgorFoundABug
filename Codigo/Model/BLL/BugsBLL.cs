@@ -16,7 +16,7 @@ namespace IgorFoundABug.Codigo.Model.BLL
             FlyBug = false;
             Vida -= 1;
             Municao = jogador.personagemDTO.Municao > 0 ? -1 : 0;
-            if ((Municao == 0 && RandomTesteBLL.testar(0.3)) || jogador.personagemDTO.SpritePersonagem.FlipV == true)
+            if (jogador.personagemDTO.SpritePersonagem.FlipV == true)
                 FlyBug = true;
         }
         public static void FullCombo()

@@ -60,6 +60,8 @@
     <Compile Include="Codigo\Controller\DeathAreaController.cs" />
     <Compile Include="Codigo\Controller\PowerUPController.cs" />
     <Compile Include="Codigo\Model\BLL\GravidadeBLL.cs" />
+    <Compile Include="Codigo\Model\BLL\IntroBLL.cs" />
+    <Compile Include="Codigo\Model\BLL\SingleMonophonicEmiterBLL.cs" />
     <Compile Include="Codigo\Model\BLL\MovimentoKinematicoBLL.cs" />
     <Compile Include="Codigo\Model\BLL\ObjectPoolingBLL.cs" />
     <Compile Include="Codigo\Model\BLL\BugsBLL.cs" />
