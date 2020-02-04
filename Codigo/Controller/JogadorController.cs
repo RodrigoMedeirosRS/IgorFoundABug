@@ -16,7 +16,7 @@ namespace IgorFoundABug.Codigo.Controller
 		{
 			personagemDTO.Vivo = true;
 			personagemDTO.Vida = 1.0f;
-			personagemDTO.Municao = 3;
+			personagemDTO.Municao = 0;
 			personagemDTO.Velocidade = 1f;
 			personagemDTO.Peso = 80;
 			personagemDTO.Gravidade = 9.8f;
@@ -24,7 +24,7 @@ namespace IgorFoundABug.Codigo.Controller
 			personagemDTO.Direcao = new Vector2(0,0);
 			personagemDTO.Corpo2D = this;
 			personagemDTO.UltimaAnimcacao = "";
-			personagemDTO.AnimationPlaryer = GetNode<AnimationPlayer>("./AnimationPlayer");
+			personagemDTO.AnimationPlayer = GetNode<AnimationPlayer>("./AnimationPlayer");
 			personagemDTO.SpritePersonagem = GetNode<Sprite>("./SpriteDoIgor");
 			Arma =  GetNode<Node2D>("./Arma") as ArmaController;
 		}

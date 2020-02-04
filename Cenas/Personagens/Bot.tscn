@@ -14,7 +14,6 @@ extents = Vector2( 3.89118, 0.726912 )
 [sub_resource type="Animation" id=3]
 resource_name = "Hit"
 length = 0.7
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Robo:frame")
 tracks/0/interp = 1
@@ -180,6 +179,12 @@ one_shot = true
 [node name="TimerEsquerda" type="Timer" parent="Sensores"]
 one_shot = true
 
+[node name="SensorCabeca" type="Area2D" parent="."]
+
+[node name="Cabeca" type="CollisionShape2D" parent="SensorCabeca"]
+position = Vector2( -0.0640106, -7.09852 )
+shape = SubResource( 2 )
+
 [node name="Armas" type="Node2D" parent="."]
 
 [node name="ArmaDireita" type="Sprite" parent="Armas"]
@@ -199,12 +204,6 @@ hframes = 2
 frame = 1
 script = ExtResource( 4 )
 
-[node name="CabecaSendor" type="Area2D" parent="."]
-
-[node name="Cabeca" type="CollisionShape2D" parent="CabecaSendor"]
-position = Vector2( -0.0978756, -6.57264 )
-shape = SubResource( 2 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Hit = SubResource( 3 )
@@ -220,5 +219,6 @@ hframes = 17
 frame = 4
 [connection signal="timeout" from="Sensores/TimerDireita" to="." method="_on_TimerDireita_timeout"]
 [connection signal="timeout" from="Sensores/TimerEsquerda" to="." method="_on_TimerEsquerda_timeout"]
+[connection signal="body_entered" from="SensorCabeca" to="." method="_on_SensorCabeca_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

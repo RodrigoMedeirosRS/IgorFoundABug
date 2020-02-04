@@ -27,7 +27,7 @@ namespace IgorFoundABug.Codigo.Controller
 			personagemDTO.Direcao = new Vector2(0,0);
 			personagemDTO.Corpo2D = this;
 			personagemDTO.UltimaAnimcacao = "";
-			personagemDTO.AnimationPlaryer = GetNode<AnimationPlayer>("./AnimationPlayer");
+			personagemDTO.AnimationPlayer = GetNode<AnimationPlayer>("./AnimationPlayer");
 			SensorDireito = GetNode<RayCast2D>("./Sensores/Direita");
 			SensorEsquerdo = GetNode<RayCast2D>("./Sensores/Esquerda");
 			TimerDireita = GetNode<Timer>("./Sensores/TimerDireita");
@@ -75,12 +75,14 @@ namespace IgorFoundABug.Codigo.Controller
 					return;
 				}
 			}
+			personagemDTO.Direcao = new Vector2(0, 0);
 		}
 		private void Animar()
 		{
-			if(personagemDTO.Vivo)
+			if (personagemDTO.Vivo && personagemDTO.AnimationPlayer.CurrentAnimation != "Hit")
 			{
-
+				AnimationView.ExecutarAnimacao(personagemDTO.Direcao == new Vector2(0,0), "Idle", personagemDTO);
+				AnimationView.ExecutarAnimacao(personagemDTO.Direcao != new Vector2(0,0), "Walk", personagemDTO);
 			}
 			AnimationView.ExecutarAnimacao(!personagemDTO.Vivo, "Morte", personagemDTO);
 		}
@@ -107,8 +109,21 @@ namespace IgorFoundABug.Codigo.Controller
 			{
 				PowerUPController powerUP = (ObjectPoolingBLL.executarPooling(PowerUP) as PowerUPController);
 				powerUP.Drop(GlobalPosition);
-			}
-				
+			}	
 		}
+		private void _on_SensorCabeca_body_entered(object body)
+		{
+			if(personagemDTO.Vivo)
+			{
+				if ((body as Node).IsInGroup("player"))
+				{
+					AnimationView.ExecutarAnimacao(personagemDTO.Vivo, "Hit", personagemDTO);
+					(body as JogadorController).personagemDTO.Gravidade = (body as JogadorController).personagemDTO.ForcaPulo * 1.2f;
+					ArmaDireita.Atirar(personagemDTO, false);
+					ArmaEquerda.Atirar(personagemDTO, true);
+				}
+			}
+		}
+
 	}
 }

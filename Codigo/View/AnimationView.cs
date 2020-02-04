@@ -10,7 +10,7 @@ namespace IgorFoundABug.Codigo.View
             if (condition && personagemDTO.UltimaAnimcacao != nomeAnimacao)
             {
                 personagemDTO.UltimaAnimcacao = nomeAnimacao;
-                personagemDTO.AnimationPlaryer.Play(nomeAnimacao, -1, 1);
+                personagemDTO.AnimationPlayer.Play(nomeAnimacao, -1, 1);
             }
         }
         public static bool Flip2D(PersonagemDTO personagemDTO)
