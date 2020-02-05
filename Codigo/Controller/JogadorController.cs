@@ -15,6 +15,7 @@ namespace IgorFoundABug.Codigo.Controller
 		private Node2D Arma;
 		private Timer Combo;
 		private GameController Base;
+		public bool paused = false;
 		public override void _Ready()
 		{
 			BugsBLL.jogador = this;
@@ -38,9 +39,9 @@ namespace IgorFoundABug.Codigo.Controller
 		}
 		public override void _PhysicsProcess(float delta)
 		{
-			if (!BugsBLL.FlyBug)
-				GravidadeBLL.Gravidade2D(personagemDTO);
-			Acoes();
+			GravidadeBLL.Gravidade2D(personagemDTO);
+			if(!paused)
+				Acoes();
 		}
 
 		private void Acoes()
@@ -67,7 +68,8 @@ namespace IgorFoundABug.Codigo.Controller
 			personagemDTO.Direcao.x = (Convert.ToInt32(KeyboardUtils.GetKey("ui_right", Keystatus.Hold)) - Convert.ToInt32(KeyboardUtils.GetKey("ui_left", Keystatus.Hold)));
 			if(KeyboardUtils.GetKey("ui_right", Keystatus.Pressed) || KeyboardUtils.GetKey("ui_left", Keystatus.Pressed))
 			{
-				BugsBLL.Combo += 1;
+				if (!BugsBLL.FlyBug)
+					BugsBLL.Combo += 1;
 				Combo.Start(1);
 			}
 				

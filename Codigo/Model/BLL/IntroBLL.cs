@@ -1,14 +1,18 @@
 using Godot;
 using System.Collections.Generic;
+using IgorFoundABug.Codigo.Controller;
 
 namespace IgorFoundABug.Codigo.Model.BLL
 {
 	public class IntroBLL : Label
 	{
 		private List<string> texto = new List<string>();
+		private JogadorController jogador;
 		private int textoatual = 0;
 		public override void _Ready()
 		{
+			jogador = GetParent().GetNode("./Igor") as JogadorController;
+			jogador.paused = true;
 			texto.Add("Ola Igor");
 			texto.Add("Bem vindo a sua prisão");
 			texto.Add("Nós os programadores");
@@ -42,6 +46,8 @@ namespace IgorFoundABug.Codigo.Model.BLL
 					Text = texto[textoatual];
 					textoatual += 1;
 				}
+				if (textoatual == texto.Count)
+					jogador.paused = false;
 			}
 		}
 		public override void _Process(float delta)
