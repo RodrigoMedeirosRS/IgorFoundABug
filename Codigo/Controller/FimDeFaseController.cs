@@ -1,4 +1,5 @@
 using Godot;
+using IgorFoundABug.Codigo.Model.BLL;
 
 namespace IgorFoundABug.Codigo.Controller
 {
@@ -13,6 +14,7 @@ namespace IgorFoundABug.Codigo.Controller
 		{
 			if ((body as Node).IsInGroup("player"))
 			{
+				BugsBLL.Spawnpoint = new Vector2(34.28f ,25.9883f);
 				System.Threading.Thread.Sleep(500);
 				Base.MudaNivel(Base.NivelAtual += 1);
 			}
