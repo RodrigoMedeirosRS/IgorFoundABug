@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Igor Found a Bug"
 run/main_scene="res://Base.tscn"
+boot_splash/bg_color=Color( 0.262745, 0.321569, 0.239216, 1 )
 config/icon="res://icon.png"
 
 [display]
