@@ -9,12 +9,11 @@ namespace IgorFoundABug.Codigo.Controller
 	{
 		private List<PackedScene> Niveis = new List<PackedScene>();
 		private Node NivelCarregado;
-		public int NivelAtual = 1;
+		public int NivelAtual = 0;
 		public bool Portugues = false;
 		public override void _Ready()
 		{
 			SingleMonophonicEmiterBLL.emissor = this;
-			OS.WindowMaximized = true;
 			NivelCarregado = GetChild(0);
 			DefineListaDeNiveis();
 			MudaNivel(NivelAtual);
