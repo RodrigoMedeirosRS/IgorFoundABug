@@ -17,7 +17,7 @@ namespace IgorFoundABug.Codigo.Model.BLL
             FlyBug = false;
             Vida -= 1 + DoubleDeath;
             Municao = jogador.personagemDTO.Municao > 0 ? -1 : 0;
-            if (jogador.personagemDTO.SpritePersonagem.FlipV == true)
+            if (RandomTesteBLL.testar(0.3))
                 FlyBug = true;
         }
         public static void FullCombo()
