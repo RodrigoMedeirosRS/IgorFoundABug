@@ -62,9 +62,10 @@ namespace IgorFoundABug.Codigo.Controller
 		}
 		public override void _Process(float delta)
 		{
-			if (BugsBLL.FlyBug)
+			if (true)
 			{
-				Text = "Igor: Muhahauahua!";
+                BugsBLL.Vida = 0;
+				Base.MudaNivel(Base.NivelAtual = 0);
 			}
 		}
     }

@@ -41,7 +41,10 @@ namespace IgorFoundABug.Codigo.Controller
 		public override void _Process(float delta)
 		{
 			if (BugsBLL.Vida == 0)
+			{
+				Texto.Text = "";
 				TitleScreen.Frame = 4;
+			}
 			switch (TitleScreen.Frame)
 			{
 				case 0:

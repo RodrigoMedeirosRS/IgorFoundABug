@@ -10,7 +10,7 @@ namespace IgorFoundABug.Codigo.Controller
 		private List<PackedScene> Niveis = new List<PackedScene>();
     	private Node NivelCarregado;
 		public int NivelAtual = 3;
-		public bool Portugues = false;
+		public bool Portugues = true;
     	public override void _Ready()
     	{
 			SingleMonophonicEmiterBLL.emissor = this;
