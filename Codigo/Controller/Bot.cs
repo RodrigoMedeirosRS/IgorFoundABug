@@ -17,8 +17,10 @@ namespace IgorFoundABug.Codigo.Controller
 		private Timer TimerDireita;
 		private Timer TimerEsquerda;
 		private List<Node> PowerUP;
+		private AudioStream KillSound;
 		public override void _Ready()
 		{
+			KillSound = ResourceLoader.Load("res://Recursos/Sons/powerup.wav") as AudioStream;
 			personagemDTO.Vivo = true;
 			personagemDTO.Velocidade = 0.3f;
 			personagemDTO.Peso = 80;
@@ -84,6 +86,8 @@ namespace IgorFoundABug.Codigo.Controller
 				AnimationView.ExecutarAnimacao(personagemDTO.Direcao == new Vector2(0,0), "Idle", personagemDTO);
 				AnimationView.ExecutarAnimacao(personagemDTO.Direcao != new Vector2(0,0), "Walk", personagemDTO);
 			}
+			if (!personagemDTO.Vivo && personagemDTO.AnimationPlayer.CurrentAnimation != "Morte" && personagemDTO.AnimationPlayer.CurrentAnimation != "")
+				SingleMonophonicEmiterBLL.Reproduzir(KillSound);
 			AnimationView.ExecutarAnimacao(!personagemDTO.Vivo, "Morte", personagemDTO);
 		}
 		private void _on_TimerDireita_timeout()

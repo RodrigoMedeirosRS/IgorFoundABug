@@ -1,11 +1,14 @@
 using Godot;
+using IgorFoundABug.Codigo.Model.BLL;
 
 namespace IgorFoundABug.Codigo.Controller
 {
 	public class PowerUPController : Area2D
 	{
+		private AudioStream PowerUpSound;
 		public override void _Ready()
 		{
+			PowerUpSound = ResourceLoader.Load("res://Recursos/Sons/kill.wav") as AudioStream;
 			SetCollisionLayerBit(0, false);
 		}
 		public void Drop(Vector2 posicao)
@@ -18,6 +21,7 @@ namespace IgorFoundABug.Codigo.Controller
 		{
 			if ((body as Node).IsInGroup("player"))
 			{
+				SingleMonophonicEmiterBLL.Reproduzir(PowerUpSound);
 				SetCollisionLayerBit(0, false);
 				Visible = false;
 				(body as JogadorController).personagemDTO.Municao += 3;

@@ -13,8 +13,10 @@ namespace IgorFoundABug.Codigo.Controller
 		private List<string> Abertura;
 		private int TextoAtual;
 		private GameController Base;
+		private AudioStream MenuSound;
 		public override void _Ready()
 		{
+			MenuSound = ResourceLoader.Load("res://Recursos/Sons/select.wav") as AudioStream;
 			TextoAtual = 0;
 			Abertura = new List<String>();
 			Abertura.Add("Aviso: nenhum tester foi maltaradado ou ferido para a criaçao desse jogo.");
@@ -53,18 +55,26 @@ namespace IgorFoundABug.Codigo.Controller
 					break;
 				case 1:
 					if (KeyboardUtils.GetKey("ui_left", Keystatus.Pressed) || KeyboardUtils.GetKey("ui_right", Keystatus.Pressed))
+					{
+						SingleMonophonicEmiterBLL.Reproduzir(MenuSound);
 						TitleScreen.Frame = 2;
+					}
 					if (KeyboardUtils.GetKey("ui_accept", Keystatus.Pressed))
 					{
+						SingleMonophonicEmiterBLL.Reproduzir(MenuSound);
 						Base.Portugues = false;
 						TitleScreen.Frame = 3;
 					}
 					break;
 				case 2:
 					if (KeyboardUtils.GetKey("ui_left", Keystatus.Pressed) || KeyboardUtils.GetKey("ui_right", Keystatus.Pressed))
+					{
+						SingleMonophonicEmiterBLL.Reproduzir(MenuSound);
 						TitleScreen.Frame = 1;
+					}
 					if (KeyboardUtils.GetKey("ui_accept", Keystatus.Pressed) || KeyboardUtils.GetKey("ui_up", Keystatus.Pressed))
 					{
+						SingleMonophonicEmiterBLL.Reproduzir(MenuSound);
 						Base.Portugues = true;
 						TitleScreen.Frame = 3;
 					}
@@ -72,6 +82,7 @@ namespace IgorFoundABug.Codigo.Controller
 				case 3:
 					if (KeyboardUtils.GetKey("ui_accept", Keystatus.Pressed) || KeyboardUtils.GetKey("ui_up", Keystatus.Pressed))
 					{
+						SingleMonophonicEmiterBLL.Reproduzir(MenuSound);
 						Base.MudaNivel(1);
 					}
 					break;
@@ -81,7 +92,6 @@ namespace IgorFoundABug.Codigo.Controller
 						TitleScreen.Frame = 3;
 					break;
 				default:
-					Console.WriteLine("Default case");
 					break;
 			}
 		}

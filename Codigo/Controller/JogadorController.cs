@@ -15,9 +15,13 @@ namespace IgorFoundABug.Codigo.Controller
 		private Node2D Arma;
 		private Timer Combo;
 		private GameController Base;
+		private AudioStream JumpSound;
+		private AudioStream DieSound;
 		public bool paused = false;
 		public override void _Ready()
 		{
+			DieSound = ResourceLoader.Load("res://Recursos/Sons/die.wav") as AudioStream;
+			JumpSound = ResourceLoader.Load("res://Recursos/Sons/jump.wav") as AudioStream;
 			BugsBLL.jogador = this;
 			GlobalPosition = BugsBLL.Spawnpoint;
 			personagemDTO.Vivo = true;
@@ -61,6 +65,7 @@ namespace IgorFoundABug.Codigo.Controller
 			}	
 			if (KeyboardUtils.GetKey("ui_up", Keystatus.Pressed))
 			{
+				SingleMonophonicEmiterBLL.Reproduzir(JumpSound);
 				BugsBLL.FlyBug = false;
 				GravidadeBLL.Pular(personagemDTO);
 				BugsBLL.NoCombo();
@@ -90,6 +95,10 @@ namespace IgorFoundABug.Codigo.Controller
 				AnimationView.ExecutarAnimacao(BugsBLL.FlyBug,"FlyBug", personagemDTO);
 				Arma.Visible = personagemDTO.Municao != 0;
 				Arma.Scale = new Vector2(1 - (2 * Convert.ToInt32(AnimationView.Flip2D(personagemDTO))), 1);
+			}
+			if (!personagemDTO.Vivo && personagemDTO.AnimationPlayer.CurrentAnimation != "Morte")
+			{
+				SingleMonophonicEmiterBLL.Reproduzir(DieSound);
 			}
 			AnimationView.ExecutarAnimacao(!personagemDTO.Vivo, "Morte", personagemDTO);
 		}

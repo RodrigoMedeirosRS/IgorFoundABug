@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using IgorFoundABug.Codigo.Model.BLL;
 using IgorFoundABug.Codigo.Controller;
 public class DevController : Area2D
 {
@@ -10,8 +10,10 @@ public class DevController : Area2D
 	private bool inverte;
 	private bool vivo;
 	private bool ativo;
+	private AudioStream KillSound;
 	public override void _Ready()
 	{
+		KillSound = ResourceLoader.Load("res://Recursos/Sons/powerup.wav") as AudioStream;
 		ativo = false;
 		inverte = true;
 		vivo = true;
@@ -56,6 +58,7 @@ public class DevController : Area2D
 	{
 		if ((area as Node).IsInGroup("bullet"))
 		{
+			SingleMonophonicEmiterBLL.Reproduzir(KillSound);
 			vivo = false;
 		}
 	}

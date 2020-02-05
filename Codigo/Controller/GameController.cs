@@ -9,7 +9,7 @@ namespace IgorFoundABug.Codigo.Controller
 	{
 		private List<PackedScene> Niveis = new List<PackedScene>();
 		private Node NivelCarregado;
-		public int NivelAtual =2;
+		public int NivelAtual = 0;
 		public bool Portugues = true;
 		public override void _Ready()
 		{

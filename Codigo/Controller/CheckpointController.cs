@@ -10,8 +10,10 @@ namespace IgorFoundABug.Codigo.Controller
 	{
 		private bool Desativado;
 		private PersonagemDTO PersonagemDTO = new PersonagemDTO();
+		private AudioStream CheckpointSound;
 		public override void _Ready()
 		{
+			CheckpointSound = ResourceLoader.Load("res://Recursos/Sons/checkpoint.wav") as AudioStream;
 			Desativado = true;
 			PersonagemDTO.AnimationPlayer = GetNode<AnimationPlayer>("./AnimationPlayer");
 		}
@@ -19,6 +21,7 @@ namespace IgorFoundABug.Codigo.Controller
 		{
 			if ((body as Node).IsInGroup("player") && Desativado)
 			{
+				SingleMonophonicEmiterBLL.Reproduzir(CheckpointSound);
 				AnimationView.ExecutarAnimacao(true, "Active", PersonagemDTO);
 				BugsBLL.Spawnpoint = GlobalPosition;
 			}
