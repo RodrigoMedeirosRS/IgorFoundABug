@@ -59,6 +59,7 @@
     <Compile Include="Codigo\Controller\BulletController.cs" />
     <Compile Include="Codigo\Controller\CheckpointController.cs" />
     <Compile Include="Codigo\Controller\DeathAreaController.cs" />
+    <Compile Include="Codigo\Controller\EndGameController.cs" />
     <Compile Include="Codigo\Controller\FimDeFaseController.cs" />
     <Compile Include="Codigo\Controller\PowerUPController.cs" />
     <Compile Include="Codigo\Controller\TitleScreenController.cs" />
