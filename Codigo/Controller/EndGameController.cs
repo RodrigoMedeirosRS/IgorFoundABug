@@ -11,8 +11,10 @@ namespace IgorFoundABug.Codigo.Controller
 		private JogadorController jogador;
 		private int textoatual = 0;
 		private GameController Base;
+        private Node devs;
 		public override void _Ready()
 		{
+            devs = GetParent().GetParent().GetNode("./Objetos");
 			Base = GetNode("/root/Base") as GameController;
 			jogador = GetParent().GetNode("./Igor") as JogadorController;
 			jogador.personagemDTO.Municao = 99999;
@@ -34,6 +36,7 @@ namespace IgorFoundABug.Codigo.Controller
 			texto.Add("Igor: invencível!");
             texto.Add("Igor: Chegou a");
             texto.Add("Igor: Hora de vocês");
+            texto.Add("Igor: Muhuauahuauah");
 		}
 		private void Ingles()
 		{
@@ -46,6 +49,7 @@ namespace IgorFoundABug.Codigo.Controller
 			texto.Add("Igor: Now");
             texto.Add("Igor: Now it's time for");
             texto.Add("Igor: for revenge!");
+            texto.Add("Igor: Muhuauahuauah");
 		}
 		private void _on_Timer_timeout()
 		{
@@ -62,7 +66,7 @@ namespace IgorFoundABug.Codigo.Controller
 		}
 		public override void _Process(float delta)
 		{
-			if (true)
+			if (devs.GetChildCount() <= 0)
 			{
                 BugsBLL.Vida = 0;
 				Base.MudaNivel(Base.NivelAtual = 0);

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Codigo/Controller/EndGameController.cs" type="Script" id=1]
 [ext_resource path="res://Recursos/Font/vistor.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Cenas/Personagens/Igor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Cenas/Personagens/Dev.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Recursos/Sprites/Calabouco.tres" type="TileSet" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -48,6 +49,18 @@ autostart = true
 [node name="Spawners" type="Node2D" parent="."]
 
 [node name="Objetos" type="Node2D" parent="."]
+
+[node name="Dev" parent="Objetos" instance=ExtResource( 4 )]
+position = Vector2( 60.4781, 39.6071 )
+
+[node name="Dev2" parent="Objetos" instance=ExtResource( 4 )]
+position = Vector2( 20, 39.607 )
+
+[node name="Dev3" parent="Objetos" instance=ExtResource( 4 )]
+position = Vector2( 10, 39.607 )
+
+[node name="Dev4" parent="Objetos" instance=ExtResource( 4 )]
+position = Vector2( 50, 39.607 )
 
 [node name="Prision" type="TileMap" parent="."]
 tile_set = ExtResource( 5 )
