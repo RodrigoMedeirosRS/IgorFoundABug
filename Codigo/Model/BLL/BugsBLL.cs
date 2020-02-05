@@ -5,8 +5,8 @@ namespace IgorFoundABug.Codigo.Model.BLL
 {
     public static class BugsBLL
     {
-        public static int Vida = 0;
-        public static int Municao = 0;
+        public static int Vida = 3;
+        public static int Municao = 3;
         public static bool FlyBug = false;
         public static int Combo = 0;
         public static Vector2 Spawnpoint = new Vector2(34.28f ,25.9883f);

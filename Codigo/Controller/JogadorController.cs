@@ -11,8 +11,10 @@ namespace IgorFoundABug.Codigo.Controller
 	public class JogadorController : KinematicBody2D
 	{
 		public JogadorDTO personagemDTO = new JogadorDTO();
-		private ArmaController Arma;
+		private ArmaController ArmaSprite;
+		private Node2D Arma;
 		private Timer Combo;
+		private GameController Base;
 		public override void _Ready()
 		{
 			BugsBLL.jogador = this;
@@ -29,8 +31,10 @@ namespace IgorFoundABug.Codigo.Controller
 			personagemDTO.UltimaAnimcacao = "";
 			personagemDTO.AnimationPlayer = GetNode<AnimationPlayer>("./AnimationPlayer");
 			personagemDTO.SpritePersonagem = GetNode<Sprite>("./SpriteDoIgor");
+			Base = GetNode("/root/Base") as GameController;
 			Combo = GetNode<Timer>("./Combo");
-			Arma =  GetNode<Node2D>("./Arma") as ArmaController;
+			ArmaSprite =  GetNode<Node2D>("./Arma/ArmaSprite") as ArmaController;
+			Arma = ArmaSprite.GetParent<Node2D>();
 		}
 		public override void _PhysicsProcess(float delta)
 		{
@@ -51,7 +55,7 @@ namespace IgorFoundABug.Codigo.Controller
 			if (KeyboardUtils.GetKey("ui_select", Keystatus.Pressed) && personagemDTO.Municao != 0)
 			{
 				personagemDTO.Municao -= 1;
-				Arma.Atirar(personagemDTO, personagemDTO.SpritePersonagem.FlipH);
+				ArmaSprite.Atirar(personagemDTO, personagemDTO.SpritePersonagem.FlipH);
 			}	
 			if (KeyboardUtils.GetKey("ui_up", Keystatus.Pressed))
 			{
@@ -91,7 +95,7 @@ namespace IgorFoundABug.Codigo.Controller
 			if (anim_name == "Morte")
 			{
 				BugsBLL.Morre();
-				GetTree().ReloadCurrentScene();
+				Base.MudaNivel(Base.NivelAtual);
 			}
 		}
 	}
