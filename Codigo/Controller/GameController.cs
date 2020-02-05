@@ -9,7 +9,7 @@ namespace IgorFoundABug.Codigo.Controller
 	{
 		private List<PackedScene> Niveis = new List<PackedScene>();
     	private Node NivelCarregado;
-		public int NivelAtual = 0;
+		public int NivelAtual = 3;
 		public bool Portugues = false;
     	public override void _Ready()
     	{
@@ -24,6 +24,7 @@ namespace IgorFoundABug.Codigo.Controller
 			Niveis.Add((PackedScene)ResourceLoader.Load("res://Level-00.tscn"));
         	Niveis.Add((PackedScene)ResourceLoader.Load("res://Level-01.tscn"));
         	Niveis.Add((PackedScene)ResourceLoader.Load("res://Level-02.tscn"));
+			Niveis.Add((PackedScene)ResourceLoader.Load("res://Level-03.tscn"));
     	}
     	public void MudaNivel(int ProximoNivel)
     	{

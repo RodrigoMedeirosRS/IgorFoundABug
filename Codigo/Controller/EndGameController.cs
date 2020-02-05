@@ -13,10 +13,10 @@ namespace IgorFoundABug.Codigo.Controller
 		private GameController Base;
 		public override void _Ready()
 		{
-            jogador.personagemDTO.Municao = 99999;
 			Base = GetNode("/root/Base") as GameController;
 			jogador = GetParent().GetNode("./Igor") as JogadorController;
-			jogador.paused = true;
+			jogador.personagemDTO.Municao = 99999;
+            jogador.paused = true;
 			if (Base.Portugues)
 				Portugues();
 			else
