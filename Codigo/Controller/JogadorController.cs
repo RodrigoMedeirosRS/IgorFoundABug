@@ -39,7 +39,8 @@ namespace IgorFoundABug.Codigo.Controller
 		}
 		public override void _PhysicsProcess(float delta)
 		{
-			GravidadeBLL.Gravidade2D(personagemDTO);
+			if (!BugsBLL.FlyBug)
+				GravidadeBLL.Gravidade2D(personagemDTO);
 			if(!paused)
 				Acoes();
 		}
