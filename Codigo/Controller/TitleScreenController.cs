@@ -10,19 +10,19 @@ namespace IgorFoundABug.Codigo.Controller
 	{
 		private Sprite TitleScreen;
 		private Label Texto;
-        private List<string> Abertura;
-        private int TextoAtual;
+		private List<string> Abertura;
+		private int TextoAtual;
 		private GameController Base;
 		public override void _Ready()
 		{
-            TextoAtual = 0;
-            Abertura = new List<String>();
-            Abertura.Add("Aviso: nenhum tester foi maltaradado ou ferido para a criaçao desse jogo.");
-            Abertura.Add("Warning: no tester was malted or injured to create this game.");
-            Abertura.Add("A Game By R.M.Lehnemann");
-            Abertura.Add("");
+			TextoAtual = 0;
+			Abertura = new List<String>();
+			Abertura.Add("Aviso: nenhum tester foi maltaradado ou ferido para a criaçao desse jogo.");
+			Abertura.Add("Warning: no tester was malted or injured to create this game.");
+			Abertura.Add("A Game By R.M.Lehnemann");
+			Abertura.Add("");
 			Texto = GetChild(0).GetChild<Label>(1);
-            Texto.Text = Abertura[TextoAtual];
+			Texto.Text = Abertura[TextoAtual];
 			Base = GetParent().GetParent() as GameController;
 			TitleScreen = GetChild(0).GetChild<Sprite>(0);
 			TitleScreen.Frame = 0;
@@ -32,10 +32,10 @@ namespace IgorFoundABug.Codigo.Controller
 			if (TitleScreen.Frame == 0)
 			{
 				if (TextoAtual < Abertura.Count)
-                {
-                    Texto.Text = Abertura[TextoAtual];
-                    TextoAtual += 1;
-                }
+				{
+					Texto.Text = Abertura[TextoAtual];
+					TextoAtual += 1;
+				}
 			}
 		}
 		public override void _Process(float delta)
@@ -45,8 +45,8 @@ namespace IgorFoundABug.Codigo.Controller
 			switch (TitleScreen.Frame)
 			{
 				case 0:
-                    if (string.IsNullOrEmpty(Texto.Text))
-                        TitleScreen.Frame = 1;  
+					if (string.IsNullOrEmpty(Texto.Text))
+						TitleScreen.Frame = 1;  
 					break;
 				case 1:
 					if (KeyboardUtils.GetKey("ui_left", Keystatus.Pressed) || KeyboardUtils.GetKey("ui_right", Keystatus.Pressed))

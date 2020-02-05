@@ -24,8 +24,10 @@ config/icon="res://icon.png"
 
 window/size/width=84
 window/size/height=48
+window/size/test_width=84
+window/size/test_height=48
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [input]
 
@@ -94,7 +96,6 @@ debugger_agent/wait_timeout=30000
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
@@ -110,6 +111,8 @@ quality/shadows/filter_mode=0
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
 quality/filters/use_nearest_mipmap_filter=true
+quality/subsurface_scattering/quality=0
+quality/subsurface_scattering/weight_samples=false
 environment/default_clear_color=Color( 0.780392, 0.941176, 0.847059, 1 )
 quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
