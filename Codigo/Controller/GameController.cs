@@ -2,7 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using IgorFoundABug.Codigo.Model.BLL;
 using IgorFoundABug.Codigo.Controller.Utils;
-using System.Threading;
+
 namespace IgorFoundABug.Codigo.Controller
 {
 	public class GameController : AudioStreamPlayer2D
@@ -27,6 +27,8 @@ namespace IgorFoundABug.Codigo.Controller
     	{
         	if (NivelCarregado.GetChildCount() > 0)
         		NivelCarregado.GetChild(0).QueueFree();
+			if (ProximoNivel != NivelAtual)
+				BugsBLL.Spawnpoint = new Vector2(34.28f ,25.9883f);
         	Node newLevel = (Node)Niveis[ProximoNivel].Instance();
         	NivelCarregado.AddChild(newLevel);
 			NivelAtual = ProximoNivel;

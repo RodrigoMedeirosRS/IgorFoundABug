@@ -57,6 +57,7 @@
     <Compile Include="Codigo\Controller\Bot.cs" />
     <Compile Include="Codigo\Controller\BoxController.cs" />
     <Compile Include="Codigo\Controller\BulletController.cs" />
+    <Compile Include="Codigo\Controller\CheckpointController.cs" />
     <Compile Include="Codigo\Controller\DeathAreaController.cs" />
     <Compile Include="Codigo\Controller\PowerUPController.cs" />
     <Compile Include="Codigo\Model\BLL\GravidadeBLL.cs" />

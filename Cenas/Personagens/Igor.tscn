@@ -5,7 +5,7 @@
 [ext_resource path="res://Recursos/Sprites/gun.png" type="Texture" id=3]
 [ext_resource path="res://Codigo/Controller/ArmaController.cs" type="Script" id=4]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=1]
 resource_name = "FlyBug"
 length = 0.4
 loop = true
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ 9 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -62,7 +62,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteDoIgor:frame")
@@ -89,7 +89,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteDoIgor:frame")
 tracks/0/interp = 1
@@ -115,7 +115,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=5]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -153,11 +153,11 @@ script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/FlyBug = SubResource( 7 )
-anims/Idle = SubResource( 8 )
-anims/Jump = SubResource( 9 )
-anims/Morte = SubResource( 10 )
-anims/Walk = SubResource( 11 )
+anims/FlyBug = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/Morte = SubResource( 4 )
+anims/Walk = SubResource( 5 )
 
 [node name="SpriteDoIgor" type="Sprite" parent="."]
 z_index = 1
