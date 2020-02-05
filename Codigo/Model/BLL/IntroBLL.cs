@@ -44,7 +44,16 @@ namespace IgorFoundABug.Codigo.Model.BLL
 			texto.Add("Igor: Eu vou encontrar");
 			texto.Add("Igor: e usá-los para");
 			texto.Add("Igor: vencer!");
-			texto.Add("Dica: Encontre um bug");
+			texto.Add("Dica: Morrer irá forçar");
+			texto.Add("Dica: o jogo.");
+			texto.Add("Dica: Provocando Bugs.");
+			texto.Add("Dica: Logo morrer pode");
+			texto.Add("Dica: Não ser algo ruim");
+			texto.Add("Dica: Tente morrer");
+			texto.Add("Dica: De formas diferentes");
+			texto.Add("Dica: Para encontrar");
+			texto.Add("Dica: bugs.");
+			texto.Add("Mexa-se para encontrar um bug");
 		}
 		private void Ingles()
 		{
@@ -68,7 +77,15 @@ namespace IgorFoundABug.Codigo.Model.BLL
 			texto.Add("Igor: must have bugs!");
 			texto.Add("Igor: I will find");
 			texto.Add("Igor: and use them to win!");
-			texto.Add("Tip: Find a bug");
+			texto.Add("Tip: Death can force");
+			texto.Add("Tip: a bug.");
+			texto.Add("Tip: So Daying");
+			texto.Add("Tip: Don't be a bad thing");
+			texto.Add("Tip: Try kill yourself");
+			texto.Add("Tip: In different ways");
+			texto.Add("Tip: To find");
+			texto.Add("Tip: bugs.");
+			texto.Add("Move yourself quickly to bug");
 		}
 		private void _on_Timer_timeout()
 		{
