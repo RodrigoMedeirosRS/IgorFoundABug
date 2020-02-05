@@ -21,7 +21,7 @@ namespace IgorFoundABug.Codigo.Model.BLL
         }
         public static void FullCombo()
         {
-            if (Combo >= 50 && !FlyBug)
+            if (Combo >= 20 && !FlyBug)
             {
                 jogador.personagemDTO.SpritePersonagem.FlipV = true;
                 jogador.personagemDTO.Velocidade = 2f;
