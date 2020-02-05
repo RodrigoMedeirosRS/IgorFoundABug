@@ -74,6 +74,10 @@ namespace IgorFoundABug.Codigo.Controller
 			}
 				
 			MovimentoKinematicoBLL.Move2D(personagemDTO);
+			if (GlobalPosition.y <= -30)
+				BugsBLL.DoubleDeath = 1;
+			if (IsOnFloor() && BugsBLL.DoubleDeath > 0)
+				BugsBLL.DoubleDeath = 0;
 		}
 		private void Animar()
 		{
@@ -97,7 +101,7 @@ namespace IgorFoundABug.Codigo.Controller
 			if (anim_name == "Morte")
 			{
 				BugsBLL.Morre();
-				Base.MudaNivel(Base.NivelAtual);
+				Base.MudaNivel(Base.NivelAtual = BugsBLL.Vida ==0 ? 0 : Base.NivelAtual);
 			}
 		}
 	}
