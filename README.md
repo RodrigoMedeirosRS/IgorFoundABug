@@ -29,4 +29,7 @@ OpenGL 2.1 / OpenGL ES 2.0 compatible hardware.
 NetFramework 4.7 on Windows.
 Mono Runtimes (https://www.mono-project.com/download/stable/#download-win).
 
+### Release Version
+(https://thirdvisiongames.itch.io/igor-find-a-bug).
+
 ### A Game By R.M.Lehnemann
