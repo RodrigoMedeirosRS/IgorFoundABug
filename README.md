@@ -1,5 +1,5 @@
 # Igor Found A Bug
-[![Screenshot](https://img.itch.zone/aW1hZ2UvNTYzMzAzLzI5NTcwNDIucG5n/original/ywMHVb.png)]
+![Screenshot](https://github.com/RodrigoMedeirosRS/IgorFoundABug/blob/master/Recursos/Sprites/Screenshot.png?raw=true)
 
 Igor Found a Bug was made to Nokia Game Jam 2 (https://itch.io/jam/nokiajam2), it is an action and platform game where you play as Igor, a young and cheerful tester who worked at a technology company until the day that wicked programmers, angry at him for finding bugs in the codes they made, trapped him in an impossible old cell phone game forever! The only way for him to escape is to find all 4 hidden bugs and take advantage of them to win the game.
 
