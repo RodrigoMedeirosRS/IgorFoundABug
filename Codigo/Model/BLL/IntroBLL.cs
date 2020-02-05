@@ -12,7 +12,7 @@ namespace IgorFoundABug.Codigo.Model.BLL
 		private GameController Base;
 		public override void _Ready()
 		{
-			Base = GetNode("./root/Base") as GameController;
+			Base = GetNode("/root/Base") as GameController;
 			jogador = GetParent().GetNode("./Igor") as JogadorController;
 			jogador.paused = true;
 			if (Base.Portugues)
