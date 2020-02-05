@@ -1,0 +1,6 @@
+/home/rodrigo/Documentos/GameDev/Projetos/IgorFoundABug/.mono/temp/bin/Debug/Igor Found a Bug.dll
+/home/rodrigo/Documentos/GameDev/Projetos/IgorFoundABug/.mono/temp/bin/Debug/Igor Found a Bug.pdb
+/home/rodrigo/Documentos/GameDev/Projetos/IgorFoundABug/.mono/temp/obj/Debug/Igor Found a Bug.csprojAssemblyReference.cache
+/home/rodrigo/Documentos/GameDev/Projetos/IgorFoundABug/.mono/temp/obj/Debug/Igor Found a Bug.csproj.CoreCompileInputs.cache
+/home/rodrigo/Documentos/GameDev/Projetos/IgorFoundABug/.mono/temp/obj/Debug/Igor Found a Bug.dll
+/home/rodrigo/Documentos/GameDev/Projetos/IgorFoundABug/.mono/temp/obj/Debug/Igor Found a Bug.pdb
