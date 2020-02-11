@@ -8,14 +8,13 @@ namespace IgorFoundABug.Codigo.Model.BLL
         public static int Vida = 3;
         public static int Municao = 0;
         public static bool FlyBug = false;
-        public static int DoubleDeath = 0;
         public static int Combo = 0;
         public static Vector2 Spawnpoint = new Vector2(34.28f ,25.9883f);
         public static JogadorController jogador;
         public static void Morre()
         {  
             FlyBug = false;
-            Vida -= 1 + DoubleDeath;
+            Vida -= 1;
             Municao = jogador.personagemDTO.Municao > 0 ? -1 : 0;
             if (RandomTesteBLL.testar(0.3))//jogador.personagemDTO.SpritePersonagem.FlipV == true ||)
                 FlyBug = true;

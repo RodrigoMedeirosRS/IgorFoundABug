@@ -1,6 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 using IgorFoundABug.Codigo.Controller;
+using IgorFoundABug.Codigo.Controller.Utils;
 
 namespace IgorFoundABug.Codigo.Model.BLL
 {
@@ -89,6 +90,16 @@ namespace IgorFoundABug.Codigo.Model.BLL
 		}
 		private void _on_Timer_timeout()
 		{
+			PulaTexto();	
+		}
+		public override void _PhysicsProcess(float delta)
+		{
+			if(KeyboardUtils.GetKey("ui_select", Keystatus.Pressed))
+			
+				PulaTexto();
+		}
+		private void PulaTexto()
+		{
 			if (textoatual < texto.Count)
 			{
 				if (BugsBLL.FlyBug == false)
@@ -98,13 +109,6 @@ namespace IgorFoundABug.Codigo.Model.BLL
 				}
 				if (textoatual == texto.Count)
 					jogador.paused = false;
-			}
-		}
-		public override void _Process(float delta)
-		{
-			if (BugsBLL.FlyBug)
-			{
-				Text = "Igor: I found a Bug!";
 			}
 		}
 	}

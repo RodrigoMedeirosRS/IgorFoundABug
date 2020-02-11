@@ -12,22 +12,22 @@
 [ext_resource path="res://Codigo/Model/Utils/Camera2DFollow.cs" type="Script" id=11]
 [ext_resource path="res://Recursos/Sprites/Vida.png" type="Texture" id=12]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.8079, 3.03217 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 55.3132, 3.03217 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 44.9152, 3.11927 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 13.3149, 2.72205 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 87.3207, 2.72205 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 917.641, 10 )
 
 [node name="Level" type="Node2D"]
@@ -49,38 +49,42 @@ drag_margin_bottom = 0.0
 script = ExtResource( 11 )
 
 [node name="Vida" type="Sprite" parent="Jogador/Camera2D"]
-position = Vector2( -38.0005, -20.9544 )
+position = Vector2( -29.0005, -18.9544 )
 z_index = 7
 texture = ExtResource( 12 )
 
 [node name="Texto" type="Label" parent="Jogador/Camera2D/Vida"]
-margin_left = 5.0
-margin_top = -4.0
-margin_right = 24.0
-margin_bottom = 5.0
+margin_left = -3.0
+margin_top = -6.0
+margin_right = 12.0
+margin_bottom = 4.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
-text = "0"
+text = "-00"
+align = 1
 valign = 2
+autowrap = true
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Municao" type="Sprite" parent="Jogador/Camera2D"]
-position = Vector2( 20.9995, -21.9544 )
+position = Vector2( 27.9995, -18.9544 )
 z_index = 7
 texture = ExtResource( 8 )
 
 [node name="Texto" type="Label" parent="Jogador/Camera2D/Municao"]
-margin_left = 5.0
-margin_top = -4.0
-margin_right = 23.0
-margin_bottom = 5.0
+margin_left = -3.0
+margin_top = -6.0
+margin_right = 12.0
+margin_bottom = 4.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.262745, 0.321569, 0.239216, 1 )
-text = "-000"
+text = "-00"
+align = 1
 valign = 2
+autowrap = true
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -96,63 +100,63 @@ script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 1.8313, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 93.8313, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 448.851, 0.397224 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 618.064, -0.794418 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 656.991, -0.794418 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 729.283, -1.19164 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 770.196, -1.19164 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 798.796, -1.98606 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 828.189, -1.58884 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 861.158, -1.19163 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 1033.95, -0.397202 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 1074.06, -0.794418 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 1114.98, -1.19163 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 1153.51, -1.19163 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="Objetos/Deathbox"]
 position = Vector2( 1484.78, -8.34146 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Bot" parent="Objetos" instance=ExtResource( 9 )]
 position = Vector2( 321.109, 39 )
@@ -245,5 +249,5 @@ tile_data = PoolIntArray( -917451, 0, 0, -917450, 0, 0, -851915, 0, 0, -851914, 
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 516.12, 57.8395 )
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 [connection signal="body_entered" from="Objetos/Deathbox" to="Objetos/Deathbox" method="_on_Deathbox_body_entered"]

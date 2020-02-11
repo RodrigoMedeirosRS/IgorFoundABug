@@ -9,7 +9,7 @@ namespace IgorFoundABug.Codigo.Controller
 	{
 		private List<PackedScene> Niveis = new List<PackedScene>();
 		private Node NivelCarregado;
-		public int NivelAtual = 0;
+		public int NivelAtual = 1;
 		public bool Portugues = false;
 		public override void _Ready()
 		{
@@ -33,7 +33,6 @@ namespace IgorFoundABug.Codigo.Controller
 			{
 				BugsBLL.Spawnpoint = new Vector2(34.28f ,25.9883f);
 				BugsBLL.FlyBug = false;
-				BugsBLL.DoubleDeath = 0;
 				BugsBLL.Combo = 0;
 			}
 			Node newLevel = (Node)Niveis[ProximoNivel].Instance();
