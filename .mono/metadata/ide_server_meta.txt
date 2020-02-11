@@ -1,2 +1,0 @@
-﻿34999
-/home/rodrigo/.steam/steam/steamapps/common/Godot Engine/godot.x11.opt.tools.64

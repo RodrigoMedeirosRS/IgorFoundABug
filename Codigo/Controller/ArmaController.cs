@@ -18,7 +18,7 @@ namespace IgorFoundABug.Codigo.Controller
         {
             SingleMonophonicEmiterBLL.Reproduzir(TiroSound);
             BulletController disparo = (ObjectPoolingBLL.executarPooling(bulletPool) as BulletController);
-            Vector2 direcao = invertido ? new Vector2(GlobalPosition.x -10, GlobalPosition.y) : new Vector2(GlobalPosition.x +10, GlobalPosition.y);
+            Vector2 direcao = invertido ? new Vector2(GlobalPosition.x -3, GlobalPosition.y) : new Vector2(GlobalPosition.x +3, GlobalPosition.y);
             disparo.Shoot(direcao, invertido);
         }
     }

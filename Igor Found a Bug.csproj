@@ -53,6 +53,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Codigo\Controller\AndroidController.cs" />
     <Compile Include="Codigo\Controller\ArmaController.cs" />
     <Compile Include="Codigo\Controller\Bot.cs" />
     <Compile Include="Codigo\Controller\BoxController.cs" />

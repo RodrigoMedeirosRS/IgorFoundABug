@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Recursos/Sprites/Calabouco.tres" type="TileSet" id=1]
 [ext_resource path="res://Cenas/Objetos/Checkpoint.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Cenas/Objetos/FimDeFase.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Recursos/Sprites/Ammo.png" type="Texture" id=8]
 [ext_resource path="res://Cenas/Personagens/Bot.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Android.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Codigo/Model/Utils/Camera2DFollow.cs" type="Script" id=11]
 [ext_resource path="res://Recursos/Sprites/Vida.png" type="Texture" id=12]
 
@@ -89,6 +90,10 @@ clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Android" parent="Jogador/Camera2D" instance=ExtResource( 10 )]
+position = Vector2( -50, -24 )
+z_index = 99
 
 [node name="Spawners" type="Node2D" parent="."]
 
