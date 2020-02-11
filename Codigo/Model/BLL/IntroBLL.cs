@@ -11,8 +11,10 @@ namespace IgorFoundABug.Codigo.Model.BLL
 		private JogadorController jogador;
 		private int textoatual = 0;
 		private GameController Base;
+		private Timer Tempo;
 		public override void _Ready()
 		{
+			Tempo = GetChild<Timer>(0);
 			Base = GetNode("/root/Base") as GameController;
 			jogador = GetParent().GetNode("./Igor") as JogadorController;
 			jogador.paused = true;
@@ -24,69 +26,56 @@ namespace IgorFoundABug.Codigo.Model.BLL
 		}
 		private void Portugues()
 		{
-			texto.Add("Ola Igor");
-			texto.Add("Bem vindo a sua prisão");
+			texto.Add("Ola Igor!");
+			texto.Add("Bem vindo a sua prisão!");
 			texto.Add("Nós os programadores");
-			texto.Add("Ficamos com raiva de você");
-			texto.Add("Por causa de todos os bugs");
-			texto.Add("Que você achou nos");
-			texto.Add("nossos códigos");
+			texto.Add("ficamos com raiva de você");
+			texto.Add("por causa de todos os bugs");
+			texto.Add("que você achou nos nossos códigos.");
 			texto.Add("Por isso te prendemos");
-			texto.Add("Em um jogo de Nokia 3310");
-			texto.Add("Impossível de vencer");
-			texto.Add("Aproveite sua prisão");
+			texto.Add("Em um jogo de celular");
+			texto.Add("impossível de vencer!");
+			texto.Add("Aproveite sua prisão!");
 			texto.Add("Pois você ficará aqui");
-			texto.Add("para sempre!");
+			texto.Add("Para todo o sempre!");
 			texto.Add("Muahahahahahahahaha!");
 			texto.Add("Igor: Não!");
-			texto.Add("Igor: Eu conheço vocês");
-			texto.Add("Igor: Esse jogo deve");
-			texto.Add("Igor: ter bugs!");
-			texto.Add("Igor: Eu vou encontrar");
-			texto.Add("Igor: e usá-los para");
-			texto.Add("Igor: vencer!");
-			texto.Add("Dica: Morrer irá forçar");
-			texto.Add("Dica: o jogo.");
-			texto.Add("Dica: Provocando Bugs.");
-			texto.Add("Dica: Logo morrer pode");
-			texto.Add("Dica: Não ser algo ruim");
+			texto.Add("Igor: Eu conheço vocês!");
+			texto.Add("Igor: Esse jogo deve ter bugs!");
+			texto.Add("Igor: Eu vou encontrar todos");
+			texto.Add("Igor: e usá-los para vencer!");
+			texto.Add("Dica: Morrer provocará Bugs.");
+			texto.Add("Dica: Logo morrer não é algo ruim.");
 			texto.Add("Dica: Tente morrer");
-			texto.Add("Dica: De formas diferentes");
-			texto.Add("Dica: Para encontrar");
-			texto.Add("Dica: bugs.");
+			texto.Add("Dica: Para encontrar bugs.");
 			texto.Add("Mexa-se para encontrar um bug");
 		}
 		private void Ingles()
 		{
 			texto.Add("Hello Igor");
-			texto.Add("Wellcome to your prision");
+			texto.Add("wellcome to your prision!");
 			texto.Add("We the programmers");
-			texto.Add("We get mad at you");
-			texto.Add("Because of all the bugs");
-			texto.Add("That you found in");
-			texto.Add("in our codes");
-			texto.Add("That's why we arrested you");
-			texto.Add("In a Nokia 3310 game");
-			texto.Add("Impossible to win");
+			texto.Add("get mad with you,");
+			texto.Add("because all the bugs");
+			texto.Add("you found in our codes.");
+			texto.Add("So we arrested you");
+			texto.Add("into a old phone game");
+			texto.Add("impossible to win.");
 			texto.Add("Enjoy your prision");
-			texto.Add("Because you will stay here");
-			texto.Add("forever!");
+			texto.Add("because you will stay here");
+			texto.Add("forever and ever!");
 			texto.Add("Muahahahahahahahaha!");
 			texto.Add("Igor: No!");
-			texto.Add("Igor: I know you");
-			texto.Add("Igor: This game ");
-			texto.Add("Igor: must have bugs!");
-			texto.Add("Igor: I will find");
-			texto.Add("Igor: and use them to win!");
-			texto.Add("Tip: Death can force");
-			texto.Add("Tip: a bug.");
-			texto.Add("Tip: So Daying");
-			texto.Add("Tip: Don't be a bad thing");
+			texto.Add("Igor: I know you!");
+			texto.Add("Igor: This game must have bugs!");
+			texto.Add("Igor: I will find and use");
+			texto.Add("Igor: them to win!");
+			texto.Add("Tip: Death can force a bug.");
+			texto.Add("Tip: So Daying  don't be");
+			texto.Add("Tip: a bad thing");
 			texto.Add("Tip: Try kill yourself");
-			texto.Add("Tip: In different ways");
-			texto.Add("Tip: To find");
-			texto.Add("Tip: bugs.");
-			texto.Add("Move yourself quickly to bug");
+			texto.Add("Tip: To find bugs.");
+			texto.Add("Move quickly to find a bug");
 		}
 		private void _on_Timer_timeout()
 		{
@@ -105,6 +94,7 @@ namespace IgorFoundABug.Codigo.Model.BLL
 				if (BugsBLL.FlyBug == false)
 				{
 					Text = texto[textoatual];
+					Tempo.WaitTime = 3;
 					textoatual += 1;
 				}
 				if (textoatual == texto.Count)

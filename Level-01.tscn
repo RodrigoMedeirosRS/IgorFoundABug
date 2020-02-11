@@ -4,7 +4,7 @@
 [ext_resource path="res://Recursos/Sprites/Calabouco.tres" type="TileSet" id=2]
 [ext_resource path="res://Cenas/Objetos/FimDeFase.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Cenas/Personagens/Igor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Recursos/Font/vistor.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Recursos/Font/vistor_title.tres" type="DynamicFont" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 516.44, 10 )
@@ -43,7 +43,7 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="Jogador/Label"]
-wait_time = 1.75
+wait_time = 3.0
 autostart = true
 
 [node name="Spawners" type="Node2D" parent="."]

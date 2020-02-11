@@ -49,7 +49,7 @@ drag_margin_bottom = 0.0
 script = ExtResource( 11 )
 
 [node name="Vida" type="Sprite" parent="Jogador/Camera2D"]
-position = Vector2( -29.0005, -18.9544 )
+position = Vector2( -35.0005, -18.9544 )
 z_index = 7
 texture = ExtResource( 12 )
 
@@ -70,7 +70,7 @@ __meta__ = {
 }
 
 [node name="Municao" type="Sprite" parent="Jogador/Camera2D"]
-position = Vector2( 27.9995, -18.9544 )
+position = Vector2( 34.9995, -18.9544 )
 z_index = 7
 texture = ExtResource( 8 )
 

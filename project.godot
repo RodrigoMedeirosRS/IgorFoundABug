@@ -22,12 +22,12 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=84
+window/size/width=96
 window/size/height=48
-window/size/test_width=84
+window/size/test_width=96
 window/size/test_height=48
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/aspect="keep_height"
 
 [input]
 

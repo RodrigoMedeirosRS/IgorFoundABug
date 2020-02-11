@@ -12,8 +12,10 @@ namespace IgorFoundABug.Codigo.Controller
 		private int textoatual = 0;
 		private GameController Base;
         private Node devs;
+		private Timer Tempo;
 		public override void _Ready()
 		{
+			Tempo = GetChild<Timer>(0);
             devs = GetParent().GetParent().GetNode("./Objetos");
 			Base = GetNode("/root/Base") as GameController;
 			jogador = GetParent().GetNode("./Igor") as JogadorController;
@@ -28,15 +30,14 @@ namespace IgorFoundABug.Codigo.Controller
 		private void Portugues()
 		{
 			texto.Add("Igor: Então!");
-			texto.Add("Igor: Vocês acharam");
-			texto.Add("Igor: que eu queria");
-			texto.Add("Igor: fugir?");
+			texto.Add("Igor: Vocês pensaram");
+			texto.Add("Igor: que eu queria fugir?");
 			texto.Add("Igor: Nãããããão!");
-			texto.Add("Igor: Aqui eu sou");
-			texto.Add("Igor: invencível!");
-            texto.Add("Igor: Chegou a");
-            texto.Add("Igor: Hora de vocês");
-            texto.Add("Igor: Muhuauahuauah");
+			texto.Add("Igor: Aqui eu sou invencível!");
+			texto.Add("Igor: O rei dos bugs!");
+            texto.Add("Igor: Agora chegou a");
+            texto.Add("Igor: hora de vocês");
+            texto.Add("Igor: Muhuauahua");
 		}
 		private void Ingles()
 		{
@@ -46,23 +47,14 @@ namespace IgorFoundABug.Codigo.Controller
 			texto.Add("Igor: Nooooooo!");
 			texto.Add("Igor: Here i am");
 			texto.Add("Igor: Invencible");
-			texto.Add("Igor: Now");
-            texto.Add("Igor: Now it's time for");
+			texto.Add("Igor: The King of Bugs!");
+            texto.Add("Igor: Now it's time");
             texto.Add("Igor: for revenge!");
-            texto.Add("Igor: Muhuauahuauah");
+            texto.Add("Igor: Muhuauahua");
 		}
 		private void _on_Timer_timeout()
 		{
-			if (textoatual < texto.Count)
-			{
-				if (BugsBLL.FlyBug == false)
-				{
-					Text = texto[textoatual];
-					textoatual += 1;
-				}
-				if (textoatual == texto.Count)
-					jogador.paused = false;
-			}
+			PulaTexto();
 		}
 		public override void _Process(float delta)
 		{
@@ -70,6 +62,20 @@ namespace IgorFoundABug.Codigo.Controller
 			{
                 BugsBLL.Vida = 0;
 				Base.MudaNivel(Base.NivelAtual = 0);
+			}
+		}
+		private void PulaTexto()
+		{
+			if (textoatual < texto.Count)
+			{
+				if (BugsBLL.FlyBug == false)
+				{
+					Text = texto[textoatual];
+					Tempo.WaitTime = 3;
+					textoatual += 1;
+				}
+				if (textoatual == texto.Count)
+					jogador.paused = false;
 			}
 		}
     }
