@@ -61,7 +61,7 @@ namespace IgorFoundABug.Codigo.Controller
 			if (devs.GetChildCount() <= 0)
 			{
                 BugsBLL.Vida = 0;
-				Base.MudaNivel(Base.NivelAtual = 0);
+				Base.MudaNivel(0);
 			}
 		}
 		private void PulaTexto()

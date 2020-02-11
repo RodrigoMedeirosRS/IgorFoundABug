@@ -2,8 +2,9 @@
 
 [ext_resource path="res://Codigo/Controller/GameController.cs" type="Script" id=2]
 
-[node name="Base" type="AudioStreamPlayer2D"]
-position = Vector2( 0, 10 )
+[node name="Base" type="AudioStreamPlayer"]
 script = ExtResource( 2 )
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
 
 [node name="NivelCarregado" type="Node2D" parent="."]

@@ -16,7 +16,8 @@ namespace IgorFoundABug.Codigo.Controller
 			{
 				BugsBLL.Spawnpoint = new Vector2(34.28f ,25.9883f);
 				System.Threading.Thread.Sleep(500);
-				Base.MudaNivel(Base.NivelAtual += 1);
+				var proximoNivel = Base.NivelAtual + 1;
+				Base.MudaNivel(proximoNivel);
 			}
 		}
 	}
