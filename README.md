@@ -33,3 +33,9 @@ Mono Runtimes (https://www.mono-project.com/download/stable/#download-win).
 (https://thirdvisiongames.itch.io/igor-find-a-bug).
 
 ### A Game By R.M.Lehnemann
+
+## Help Me!
+
+If you like the game, click here and give a help to ear a few bucks!
+
+https://www.swagbucks.com/lp-savings-button?cmp=695&cxid=swagbuttonref&rb=74850693&extRefCmp=1&extRb=74850693
